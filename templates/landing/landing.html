@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+	<title>Learning Platform</title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.css">
+	<link rel="stylesheet" href="{% static '/css/pages_style/landing.css' %}">
+
+
+
+
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:700|Oswald:700|Yanone+Kaffeesatz:700&amp;subset=cyrillic"
+          rel="stylesheet">
+
+</head>
+<body>
+	<div class="container">
+		<a href="/" class="logo">
+			<img src="{% static '/img/mount.png' %}" alt="Learning platform">
+		</a>
+		<nav class="navigation_panel">
+			<div class="link">
+				<a href="/training">
+					<h2 class="link_title">Тренажер</h2>
+					<p class="link_descr">Вирішення задач та розрахунок за прикладами</p>
+				</a>
+			</div>
+			<div class="link">
+				<a href="/calculation">
+					<h2 class="link_title">Розрахунок</h2>
+					<p class="link_descr">Правильний розрахунок за варіантом</p>
+				</a>
+			</div>
+			<div class="link">
+				<a href="/admin">
+					<h2 class="link_title">Адміністрування</h2>
+					<p class="link_descr">Модуль управління программою</p>
+				</a>
+			</div>
+		</nav>
+	</div>
+</body>
+</html>

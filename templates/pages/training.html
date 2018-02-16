@@ -1,0 +1,45 @@
+{% extends 'Basic_templates/base.html' %}
+{% load static %}
+
+{% block title %}
+    <link rel="stylesheet" href="{% static '/css/pages_style/training.css' %}">
+    <title>Тренажер</title>
+{% endblock %}
+{% block content %}
+    <div class="row col-10 initial-form">
+        <form class="form justify-content-center" action="{% url 'start_training' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="user_name">Введіть прізвище та ініціали</label>
+                <input type="text"  maxlength="64" class="form-control" id="user_name" required>
+            </div>
+            <div class="row col-12 justify-content-center button_container">
+                <button type="submit" class="btn btn-primary">Розпочати тест</button>
+            </div>
+        </form>
+    </div>
+    <div class="row col-md-8 justify-content-center align-items-center delete_element" id="test_block">
+        <div class="row col-12 justify-content-center transition" id="progress">
+            <p></p>
+        </div>
+        <div class="row col-12 justify-content-center transition" id="condition_test">
+            <h3></h3>
+        </div>
+        <div class="row col-12 list-group">
+            <a class="list-group-item list-group-item-action list-group-item-light" data-answer="1"></a>
+            <a class="list-group-item list-group-item-action list-group-item-light" data-answer="2"></a>
+            <a class="list-group-item list-group-item-action list-group-item-light" data-answer="3"></a>
+            <a class="list-group-item list-group-item-action list-group-item-light" data-answer="4"></a>
+        </div>
+        <div class="row col-12 justify-content-end next-test-btn hide_element transition">
+            <button type="button" class="btn btn-outline-secondary">Наступний тест</button>
+        </div>
+    </div>
+
+
+
+
+    <script defer src="{% static '/js/pages_script/training_script.js'%}"></script>
+{% endblock %}
+
+

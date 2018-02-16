@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="{% static '/css/bootstrap/bootstrap.min.css' %}">
+
+    <!--  custom styles  -->
+    <link rel="stylesheet" href="{% static '/css/pages_style/navbar.css' %}">
+    <link rel="stylesheet" href="{% static '/css/pages_style/calculation.css' %}">
+
+
+    {% block title %}{% endblock %}
+</head>
+<body>
+    <div class="container-fluid">
+        {% include 'Basic_templates/navbar.html' %}
+
+        <div class="row wrapper_content justify-content-center">
+            {% block content %}
+
+            {% endblock %}
+        </div>
+    </div>
+
+
+
+
+    <script defer src="{% static '/fonts/font-awesome-all.min.js' %}"></script>
+
+    {# library for charts   #}
+    <script src="{% static '/js/chart/chartist_pugin/chartist.min.js' %}"></script>
+    <script src="{% static '/js/chart/chartist_pugin/legend_plugin.js' %}"></script>
+
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="{% static '/js/bootstrap/bootstrap.min.js' %}"></script>
+</body>
+</html>

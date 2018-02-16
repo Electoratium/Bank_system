@@ -1,0 +1,626 @@
+{% extends 'Basic_templates/base.html' %}
+{% load static %}
+{% block title %}
+    <!-- base style for chart_js -->
+    <link rel="stylesheet" href="{% static '/css/style_chart/main_style.css' %}">
+	<link rel="stylesheet" href="{% static '/css/style_chart/base_style_chart/chart_js.min.css' %}">
+	<link rel="stylesheet" href="{% static '/css/style_chart/base_style_chart/chart_legend.css' %}">
+    <title>Розрахунок</title>
+{% endblock %}
+
+{% block content %}
+    <div class="row col-md-6 justify-content-center">
+        <div class="row col-8 justify-content-center">
+            <label class="form-title">Введіть свій номер варіанту</label>
+            <form id="form_variant" action="{% url 'complete_calculate' %}" class="form-submit">
+                {% csrf_token %}
+                    {{ form.variant }}
+                <button type="submit" class="btn btn-primary form-btn">Розрахувати</button>
+            </form>
+        </div>
+    </div>
+    <div class="row col-md-12 justify-content-center error">
+        <div class="col-md-4 alert alert-danger mx-auto" role="alert">
+            <strong>Сталася помилка в роботі програми.</strong>
+        </div>
+    </div>
+    <div class="row col-md-10 justify-content-center calculation_container">
+        <nav class="navigation-menu">
+            <div class="visib-cont"></div>
+            <div id="burger">
+                <i class="fas fa-bars fa-3x"></i>
+            </div>
+            <div class="row col-md-5 list-group" id="menu">
+                <ul class="nav navbar-nav list-group list-group-flush">
+                    <li class="list-group-item">
+                        <a href="#condition" class="list-group-item list-group-item-action"><i class="far fa-flag fa-2x menu-icons"></i> Початкові дані та умова</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="#average_rate" class="list-group-item list-group-item-action"><i class="fas fa-thumbtack fa-2x menu-icons"></i> Розрахунок середньої ставки прибутків по цінним паперам</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="#calculate_sigma" class="list-group-item list-group-item-action"><i class="fas fa-random fa-2x menu-icons"></i> Розрахунок стандартного відхилення прибутків по цінним паперам та портфеля</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="#calculate_border_sigma" class="list-group-item list-group-item-action"><i class="fas fa-compress fa-2x menu-icons"></i> Розрахунок граничних значень можливих ставок прибутковості портфеля</a>
+                    </li>
+                    <li class="list-group-item">
+
+                        <a href="#calculation_devirsification" class="list-group-item list-group-item-action"><i class="fas fa-chart-pie fa-2x menu-icons"></i> Розрахунок ступеня диверсифікації</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="#calculating_betta_coef" class="list-group-item list-group-item-action"><i class="fas fa-chart-area fa-2x menu-icons"></i> Визначення необхідної прибутковості портфеля на наступний рік</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div id="back-to-top">
+            <a href="#">
+               <i class="fas fa-chevron-circle-up fa-2x"></i>
+            </a>
+        </div>
+        <div data-spy="scroll" data-target="#menu" data-offset="30" class="scrollspy-example">
+            <div id="condition" class="row justify-content-center">
+                <h2 class="row col-md-12 justify-content-center">Початкові дані та умова</h2>
+                <p>Цінні папери А і Б мають такі минулі прибутки:</p>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Рік</th>
+                            <th >ЦП А, Ка</th>
+                            <th>ЦП Б, Кb</th>
+                            <th>ЦП С, Кс</th>
+                            <th>Ринок, Кт</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="column-year">0</td>
+                            <td class="column-cp-a"></td>
+                            <td class="column-cp-b"></td>
+                            <td class="column-cp-c"></td>
+                            <td class="column-market"></td>
+                        </tr>
+                        <tr>
+                            <td class="column-year">1</td>
+                            <td class="column-cp-a"></td>
+                            <td class="column-cp-b"></td>
+                            <td class="column-cp-c"></td>
+                            <td class="column-market"></td>
+                        </tr>
+                        <tr>
+                            <td class="column-year">2</td>
+                            <td class="column-cp-a"></td>
+                            <td class="column-cp-b"></td>
+                            <td class="column-cp-c"></td>
+                            <td class="column-market"></td>
+                        </tr>
+                        <tr>
+                            <td class="column-year">3</td>
+                            <td class="column-cp-a"></td>
+                            <td class="column-cp-b"></td>
+                            <td class="column-cp-c"></td>
+                            <td class="column-market"></td>
+                        </tr>
+                        <tr>
+                            <td class="column-year">4</td>
+                            <td class="column-cp-a"></td>
+                            <td class="column-cp-b"></td>
+                            <td class="column-cp-c"></td>
+                            <td class="column-market"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <ul class="row col-md-8 task-list">
+                    <li>
+                        <p>
+                            а) Розрахуйте середню ставку прибутків по цим цінним паперам за період 1990-1994.
+                            Припустимо, хтось володіє портфелем, який складається з 43% із цінних паперів А,
+                            30% - цінних паперів Б, 27% - ЦП С.
+                            Яка при цьому буде реалізована ставка прибутку по портфелю в кожному році за цей період?
+                            Яким буде середній прибуток по портфелю за весь цей період?
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            б) Розрахуйте стандартне відхилення прибутків по цінним паперам А,В,С і для портфеля.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            в) Розрахуйте граничні  значення можливих ставок прибутковості  портфеля
+                            з ймовірністю 99,74%. Побудуйте графіки розподілу ймовірностей
+                            для кожного з пакетів цінних паперів та портфеля. Розрахуйте значення парної кореляції
+                            ЦП А – ЦП Б, ЦП А- ЦПС, ЦП Б- ЦП С.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            г) Припустимо прибутковість безризикових ЦП складає <span id="free-risk-sp"></span>.
+                            Визначте необхідну прибутковість портфелю на наступний рік
+                            при умові, що прибутковість ринку буде дорівнювати середньоочікуваному рівню.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <div id="average_rate" class="row col-12 justify-content-center">
+                <h2>
+                    Розрахунок середньої ставки прибутків по цим цінним паперам та визначення реалізованої
+                    ставки прибутку по портфелю в кожному році та весь період.
+                </h2>
+                <div class="row col-md-10 justify-content-center">
+                    <p>Середню ставку прибутку для кожного виду ЦП розраховуємо як середню величину прибутку
+                        за п'ятирічний період . У даному випадку ставка прибутку
+                        (k<sub>сер.</sub>) за цінними паперами буде становити:
+                    </p>
+                    <div class="row col-md-6">
+                        <ul>
+                            <li>Цінні папери А: <span class="aver_rate_inc_a"></span></li>
+                            <li>Цінні папери Б: <span class="aver_rate_inc_b"></span></li>
+                            <li>Цінні папери С: <span class="aver_rate_inc_c"></span></li>
+                        </ul>
+                    </div>
+                    <p class="row col-12">Реалізована ставка прибутку за портфелем (K<sub> сер.</sub>), складеним з цінних паперів «А», «Б» і «С»,
+                        розраховується за формулою:</p>
+                    <div class="row col-6 mx-auto">
+                        <div class="row col-12 justify-content-center">
+                            <img class="img-fluid " src="{% static '/img/formula/realize_rate_income.jpg' %}" alt="realize rate income formula">
+                        </div>
+                        <ul>
+                            <li>де: <span>k<sup>p</sup><sub>t</sub></span> - доходність портфеля у році t;</li>
+                            <li>k<sub>i</sub> - доходність і-го цінного паперу році t;</li>
+                            <li>w<sub>i</sub> - питома вага і-го цінного паперу у портфелі;</li>
+                            <li> m – кількість цінних паперів, що входять до портфеля.</li>
+                        </ul>
+                    </div>
+                </div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Рік</th>
+                            <th >ЦП А, Ка</th>
+                            <th >W<sub>a</sub></th>
+                            <th>ЦП Б, Кb</th>
+                            <th >W<sub>b</sub></th>
+                            <th>ЦП С, Кс</th>
+                            <th >W<sub>с</sub></th>
+                            <th>(K<sub> p</sub>), %</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="column-year">0</td>
+                            <td class="col-cp-a"></td>
+                            <td>43</td>
+                            <td class="col-cp-b"></td>
+                            <td>30</td>
+                            <td class="col-cp-c"></td>
+                            <td>27</td>
+                            <td class="realize_rate_income"></td>
+                        </tr>
+                        <tr>
+                            <td class="column-year">1</td>
+                            <td class="col-cp-a"></td>
+                            <td>43</td>
+                            <td class="col-cp-b"></td>
+                            <td>30</td>
+                            <td class="col-cp-c"></td>
+                            <td>27</td>
+                            <td class="realize_rate_income"></td>
+                        </tr>
+                        <tr>
+                            <td class="column-year">2</td>
+                           <td class="col-cp-a"></td>
+                            <td>43</td>
+                            <td class="col-cp-b"></td>
+                            <td>30</td>
+                            <td class="col-cp-c"></td>
+                            <td>27</td>
+                            <td class="realize_rate_income"></td>
+                        </tr>
+                        <tr>
+                            <td class="column-year">3</td>
+                            <td class="col-cp-a"></td>
+                            <td>43</td>
+                            <td class="col-cp-b"></td>
+                            <td>30</td>
+                            <td class="col-cp-c"></td>
+                            <td>27</td>
+                            <td class="realize_rate_income"></td>
+                        </tr>
+                        <tr>
+                            <td class="column-year">4</td>
+                           <td class="col-cp-a"></td>
+                            <td>43</td>
+                            <td class="col-cp-b"></td>
+                            <td>30</td>
+                            <td class="col-cp-c"></td>
+                            <td>27</td>
+                            <td class="realize_rate_income"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="row col-12 average_rate_portf"></p>
+            </div>
+            <div id="calculate_sigma" class="row justify-content-center">
+                <h2 class="row col-12 justify-content-center">
+                   Розрахунок стандартного відхилення прибутків по цінним паперам «А», «Б», «С» і для портфеля.
+                </h2>
+                <div class="row col-md-10 justify-content-center">
+                    <p class="row col-12">Стандартне відхилення прибутків за всім портфелем визначаємо за допомогою формули:</p>
+                    <div class="row col-md-6 mx-auto">
+                        <div class="row col-12 justify-content-center">
+                            <img class="img-fluid " src="{% static '/img/formula/sigma.jpg' %}" alt="standart deviation formula">
+                        </div>
+                        <ul>
+                            <li>де: n - кількість років;</li>
+                            <li>kt - останній за період t прибуток;</li>
+                            <li>k - середній прибуток року.</li>
+                        </ul>
+                    </div>
+                    <p class="row col-12">Стандартне відхилення прибутків за цінними паперами «А»: «Б» і «С» визначаємо:</p>
+                    <p class="row col-12"><span>&sigma;<sub>a</sub></span> = <span class="calculation_sigma_example"></span></p>
+                    <p class="row col-12">Аналогічно визначаємо стандартне відхилення прибутків за цінними паперами «Б» і «С»  та портфеля:</p>
+                    <ul>
+                        <li><span>&sigma;<sub>b</sub> = </span><span class="calculated_sigma"></span></li>
+                        <li><span>&sigma;<sub>c</sub> = </span><span class="calculated_sigma"></span></li>
+                        <li><span>&sigma;<sub>portf.</sub> = </span><span class="calculated_sigma"></span></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="calculate_border_sigma" class="row justify-content-center">
+                <h2 class="row col-12 justify-content-center">
+                    Розрахунок граничних значень можливих ставок прибутковості портфеля з ймовірністю 99,73%,
+                    побудова графіку розподілу ймовірностей для кожного з пакетів цінних паперів та портфеля
+                    та розрахунок значення парної кореляції ЦП «А» - ЦП «Б», ЦП «А» - ЦП «С», ЦП «Б» - ЦП «С».
+                </h2>
+                <p class="row col-md-12">
+                    Граничні значення можливих ставок прибутковості цінних паперів та  портфеля з ймовірністю 99,73%
+                    будуть в діапазоні від (-З  + <span>k<sub>сер.</sub></span> )  до (+ З + <span>k<sub>сер.</sub></span> )
+                </p>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Найменнування:</th>
+                            <th>-З  + <span>k<sub>сер.</sub></span></th>
+                            <th >+ З + <span>k<sub>сер.</sub></span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ЦП а</td>
+                            <td class="left_border_sigma"></td>
+                            <td class="right_border_sigma"></td>
+                        </tr>
+                        <tr>
+                            <td>ЦП б</td>
+                            <td class="left_border_sigma"></td>
+                            <td class="right_border_sigma"></td>
+                        </tr>
+                        <tr>
+                            <td>ЦП с</td>
+                            <td class="left_border_sigma"></td>
+                            <td class="right_border_sigma"></td>
+                        </tr>
+                        <tr>
+                            <td>Портфель</td>
+                            <td class="left_border_sigma"></td>
+                            <td class="right_border_sigma"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="row col-md-10 justify-content-center chart">
+                    <div class="ct-chart-line ct-perfect-fourth"></div>
+                </div>
+                <p class="row col-12">
+                    На малюнку видно, що для нормального розподілу чим більше значення, тим більша ймовірність того,
+                    що фактичний результат буде значно відрізнятися від очікуваного. Враховуючи, що ймовірність того,
+                    що результат буде набагато нижчий очікуваного, в значній мірі визначає ступінь ризику,
+                    можна зробити висновок : показник може бути використаний як міра ризику. Але у випадку,
+                    коли активи зберігаються в диверсифікованому портфелі, цей показник перестає бути мірою ризику.
+                    Ступінь диверсифікації залежить від коефіцієнта кореляції, який розраховуємо для кожної пари ЦП
+                    за формулою:
+                </p>
+            </div>
+            <div id="calculation_devirsification" class="justify-content-center">
+                <div class="row col-md-6 mx-auto">
+                    <div class="row col-12 justify-content-center">
+                        <img class="img-fluid " src="{% static '/img/formula/degree_diversification.jpg' %}" alt="degree devirsification formula">
+                    </div>
+                    <ul>
+                        <li>де: X та Y значення відповідних змінних;</li>
+                    </ul>
+                </div>
+                <p class="row col-12">Розрахунок парної кореляції ЦП «А» - ЦП «Б»</p>
+                <table class="table table-hover table-cpa-cpb">
+                    <thead>
+                        <tr>
+                            <th>Рік</th>
+                            <th><span>ЦП<sub>A</sub>(Х),%</span></th>
+                            <th><span>ЦП<sub>Б</sub>(Y),%</span></th>
+                            <th>XY</th>
+                            <th><span>X<sup>2</sup></span></th>
+                            <th><span>X<sup>2</sup></span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0</td>
+                            <td class="cor-cpa"></td>
+                            <td class="cor-cpb"></td>
+                            <td class="cor-cpa-cpb"></td>
+                            <td class="cor-cpa-square"></td>
+                            <td class="cor-cpb-square"></td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td class="cor-cpa"></td>
+                            <td class="cor-cpb"></td>
+                            <td class="cor-cpa-cpb"></td>
+                            <td class="cor-cpa-square"></td>
+                            <td class="cor-cpb-square"></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td class="cor-cpa"></td>
+                            <td class="cor-cpb"></td>
+                            <td class="cor-cpa-cpb"></td>
+                            <td class="cor-cpa-square"></td>
+                            <td class="cor-cpb-square"></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td class="cor-cpa"></td>
+                            <td class="cor-cpb"></td>
+                            <td class="cor-cpa-cpb"></td>
+                            <td class="cor-cpa-square"></td>
+                            <td class="cor-cpb-square"></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td class="cor-cpa"></td>
+                            <td class="cor-cpb"></td>
+                            <td class="cor-cpa-cpb"></td>
+                            <td class="cor-cpa-square"></td>
+                            <td class="cor-cpb-square"></td>
+                        </tr>
+                        <tr>
+                            <td>Сумма</td>
+                            <td class="sum"></td>
+                            <td class="sum"></td>
+                            <td class="sum"></td>
+                            <td class="sum"></td>
+                            <td class="sum"></td>
+                        </tr>
+                        <tr>
+                            <td>Середнє значення</td>
+                            <td class="avrg"></td>
+                            <td class="avrg"></td>
+                            <td class="avrg"></td>
+                            <td class="avrg"></td>
+                            <td class="avrg"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>cor AB: <span class="corAB"> </span></p>
+
+                <table class="table table-hover table-cpa-cpc">
+                    <thead>
+                        <tr>
+                            <th>Рік</th>
+                            <th><span>ЦП<sub>A</sub>(Х),%</span></th>
+                            <th><span>ЦП<sub>C</sub>(Y),%</span></th>
+                            <th>XY</th>
+                            <th><span>X<sup>2</sup></span></th>
+                            <th><span>X<sup>2</sup></span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0</td>
+                            <td class="cor-cpa"></td>
+                            <td class="cor-cpc"></td>
+                            <td class="cor-cpa-cpc"></td>
+                            <td class="cor-cpa-square"></td>
+                            <td class="cor-cpc-square"></td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td class="cor-cpa"></td>
+                            <td class="cor-cpc"></td>
+                            <td class="cor-cpa-cpc"></td>
+                            <td class="cor-cpa-square"></td>
+                            <td class="cor-cpc-square"></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td class="cor-cpa"></td>
+                            <td class="cor-cpc"></td>
+                            <td class="cor-cpa-cpc"></td>
+                            <td class="cor-cpa-square"></td>
+                            <td class="cor-cpc-square"></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td class="cor-cpa"></td>
+                            <td class="cor-cpc"></td>
+                            <td class="cor-cpa-cpc"></td>
+                            <td class="cor-cpa-square"></td>
+                            <td class="cor-cpc-square"></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td class="cor-cpa"></td>
+                            <td class="cor-cpc"></td>
+                            <td class="cor-cpa-cpc"></td>
+                            <td class="cor-cpa-square"></td>
+                            <td class="cor-cpc-square"></td>
+                        </tr>
+                        <tr>
+                            <td>Сумма</td>
+                            <td class="sum"></td>
+                            <td class="sum"></td>
+                            <td class="sum"></td>
+                            <td class="sum"></td>
+                            <td class="sum"></td>
+                        </tr>
+                        <tr>
+                            <td>Середнє значення</td>
+                            <td class="avrg"></td>
+                            <td class="avrg"></td>
+                            <td class="avrg"></td>
+                            <td class="avrg"></td>
+                            <td class="avrg"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>Аналогічно: cor AC: <span class="corAC"> </span></p>
+
+                <table class="table table-hover table-cpb-cpc">
+                    <thead>
+                        <tr>
+                            <th>Рік</th>
+                            <th><span>ЦП<sub>Б</sub>(Х),%</span></th>
+                            <th><span>ЦП<sub>С</sub>(Y),%</span></th>
+                            <th>XY</th>
+                            <th><span>X<sup>2</sup></span></th>
+                            <th><span>X<sup>2</sup></span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0</td>
+                            <td class="cor-cpb"></td>
+                            <td class="cor-cpc"></td>
+                            <td class="cor-cpb-cpc"></td>
+                            <td class="cor-cpb-square"></td>
+                            <td class="cor-cpc-square"></td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td class="cor-cpb"></td>
+                            <td class="cor-cpc"></td>
+                            <td class="cor-cpb-cpc"></td>
+                            <td class="cor-cpb-square"></td>
+                            <td class="cor-cpc-square"></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td class="cor-cpb"></td>
+                            <td class="cor-cpc"></td>
+                            <td class="cor-cpb-cpc"></td>
+                            <td class="cor-cpb-square"></td>
+                            <td class="cor-cpc-square"></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td class="cor-cpb"></td>
+                            <td class="cor-cpc"></td>
+                            <td class="cor-cpb-cpc"></td>
+                            <td class="cor-cpb-square"></td>
+                            <td class="cor-cpc-square"></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td class="cor-cpb"></td>
+                            <td class="cor-cpc"></td>
+                            <td class="cor-cpb-cpc"></td>
+                            <td class="cor-cpb-square"></td>
+                            <td class="cor-cpc-square"></td>
+                        </tr>
+                        <tr>
+                            <td>Сумма</td>
+                            <td class="sum"></td>
+                            <td class="sum"></td>
+                            <td class="sum"></td>
+                            <td class="sum"></td>
+                            <td class="sum"></td>
+                        </tr>
+                        <tr>
+                            <td>Середнє значення</td>
+                            <td class="avrg"></td>
+                            <td class="avrg"></td>
+                            <td class="avrg"></td>
+                            <td class="avrg"></td>
+                            <td class="avrg"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>cor БC: <span class="corBC"> </span></p>
+            </div>
+            <div id="calculating_betta_coef" class="row col-12 justify-content-center">
+                 <h2 class="row col-12 justify-content-center">
+                     Визначення необхідної прибутковісті портфелю на наступний рік.
+                </h2>
+                <p class="row col-12">
+                    В залежності від зміни дохідності ринку ( Км ) кожний цінний папір змінюється
+                    по різному За допомогою &nbsp; &beta; &nbsp; - коефіцієнта ми можемо обчислити
+                    відносний ступінь ризику цінних паперів і обчислити потрібний прибуток по ЦП.
+                </p>
+                <p>
+                   <span> &beta; &nbsp;</span>  - коефіцієнт - це показник ризику,
+                    який характеризує ступінь чутливості зміни дохідності ЦП в залежності
+                    від зміни дохідності ринку. Розрахуємо відповідні&nbsp; &beta; &nbsp;
+                    - коефіцієнти цінних паперів А,Б,С за допомогою формули:
+                </p>
+                <div class="row col-md-6 mx-auto">
+                    <div class="row col-12 justify-content-center">
+                        <img class="img-fluid" src="{% static '/img/formula/betta_coeficients.jpg' %}" alt="betta coefficient">
+                    </div>
+                    <ul>
+                        <li>де: n - кількість періодів спостереження;</li>
+                        <li>k<sub>it</sub> - дохідність і-го цінного паперу в період t;</li>
+                        <li>k<sup>сер.</sup><sub>i</sub> - середня дохідність і-го цінного паперу за весь час;</li>
+                        <li>k<sub>mt</sub> – ринкова дохідність у періоді t;</li>
+                        <li><span>k<sup>сер.</sup><sub>m</sub></span> – середня дохідність ринкового портфеля за весь час.</li>
+                    </ul>
+                </div>
+                <p class="row col-12">Середня дохідність ринкового портфеля &nbsp;<span>k<sup>сер.</sup><sub>m</sub></span></p>
+                <p class="row col-12 avrg_income_portfolio"></p>
+                <div class="row col-12 justify-content-center betta_coeficients">
+                    <p class="row col-12 betta_a"></p>
+                    <p class="row col-12 betta_b"></p>
+                    <p class="row col-12 betta_c"></p>
+                    <p class="row col-12"><span>&beta;&nbsp;</span> - коефіцієнт портфеля визначаємо за допомогою формули:</p>
+                    <div class="row col-md-6 justify-content-center">
+                        <div class="row col-10 justify-content-center">
+                            <img class="img-fluid" src="{% static '/img/formula/betta-portfolio.jpg' %}" alt="betta portfolio coefficient">
+                        </div>
+                        <ul>
+                            <li>де: <span>&beta; <sub>p</sub></span> - бета-коефіцієнт портфеля;</li>
+                            <li>w<sub>i</sub> - питома вага і-го активу у портфелі;</li>
+                            <li> <span>&beta; <sub>i</sub></span> - бета коефіцієнт і-го активу.</li>
+                        </ul>
+                        <p class="betta_portfolio"></p>
+                    </div>
+                </div>
+                <p>Доходність, яку інвестор може вимагати від сформованого портфеля
+                    в залежності від рівня його ризику визначається за наступною формулою:
+                </p>
+                <div class="row col-md-8 justify-content-center">
+                    <div class="row col-10 justify-content-center">
+                            <img class="img-fluid" src="{% static '/img/formula/capm.jpg' %}" alt="capital assets pricing model)">
+                    </div>
+                    <ul>
+                        <li>де: <span>k<sub>t</sub></span> - доходність, яку інвестор може вимагати від активу в
+                            залежності від рівня його ризику;
+                        </li>
+                        <li><span>k<sub>rf</sub></span> - доходність за безризиковим активом;</li>
+                        <li><span>k<sub>m</sub></span> - доходність ринку (середньо ринкова дохідність);</li>
+                        <li><span>(k<sub>m</sub> - k<sub>rf</sub>)</span> - премія за ризик – параметр, що показує перевищення
+                            середньоринкової доходності в порівнянні з без ризикованими вкладеннями;
+                        </li>
+                        <li><span>&beta;</span> - коефіцієнт чутливості зміни доходності
+                            цінного паперу до зміни ринкового фактору ( <span>&beta;- коефіцієнт портфеля </span>).
+                        </li>
+                    </ul>
+                </div>
+                <b class="row col-12 capm"></b>
+            </div>
+        </div>
+    </div>
+
+    <script defer src="{% static 'js/pages_script/calculation_script.js' %}"></script>
+{% endblock %}

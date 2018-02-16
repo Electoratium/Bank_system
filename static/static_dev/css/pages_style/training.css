@@ -1,0 +1,49 @@
+.wrapper_content{
+    overflow: hidden;
+}
+.initial-form{
+    justify-content: center;
+    margin-top: 25vh;
+    opacity: 1;
+    transition: all .3s ease;
+}
+.button_container{
+    margin: 1vw 0 0 0;
+    padding: 0;
+}
+.transition{
+    transition: all .5s ease;
+}
+#test_block{
+    height: 80vh;
+}
+#progress, #condition_test{
+    opacity: 0;
+    visibility: hidden;
+}
+#test_block .list-group{
+    position: relative;
+    left:150%;
+    transition: all .8s ease;
+}
+.list-group a:not(:last-of-type){
+    display: block;
+    margin-bottom: 1%;
+}
+
+
+.show_test_block{
+    left:0!important;
+}
+.show_element{
+    opacity: 1!important;
+    visibility: visible!important;
+}
+.hide_element{
+    opacity: 0;
+    visibility: hidden;
+}
+.delete_element{
+    display: none;
+}
+
