@@ -2,17 +2,16 @@
     overflow: hidden;
 }
 .initial-form{
+    display: none!important;
     justify-content: center;
     margin-top: 25vh;
     opacity: 1;
     transition: all .3s ease;
 }
+
 .button_container{
     margin: 1vw 0 0 0;
     padding: 0;
-}
-.transition{
-    transition: all .5s ease;
 }
 #test_block{
     height: 80vh;
@@ -31,7 +30,9 @@
     margin-bottom: 1%;
 }
 
-
+.transition{
+    transition: all .5s ease;
+}
 .show_test_block{
     left:0!important;
 }
@@ -47,3 +48,76 @@
     display: none;
 }
 
+
+
+
+/*style for connection definition */
+#connection_definition{
+    height: 85vh;
+}
+#connection_definition .title-block{
+    height:15%;
+    margin-top: 2%;
+}
+#connection_definition .connection_block{
+    height: 75%;
+}
+#connection_definition ul{
+    height: 100%;
+}
+#connection_definition .connection_block .col-md-4:not(:last-child) li{
+    height: 20%;
+    margin: 2% 0;
+}
+
+
+
+
+
+
+
+.drag-drop{
+    z-index: 11;
+}
+.dropzone{
+    background-color: #ccc;
+    border: dashed 4px transparent;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+.dropzone_style {
+    height: 70px;
+}
+
+.drop-active {
+  border-color: #aaa;
+}
+
+.drop-target {
+  background-color: #29e;
+  border-color: #fff;
+  border-style: solid;
+}
+
+.drag-drop {
+  /*display: inline-block;*/
+  color: #fff;
+  background-color: #29e;
+  -webkit-transform: translate(0px, 0px);
+          transform: translate(0px, 0px);
+  transition: background-color 0.3s;
+}
+
+.drag-drop.can-drop {
+  color: #000;
+  background-color: #4e4;
+}
+
+.cant-drop{
+    color: #000;
+    background-color:#EE5C57;
+}
+
+.transition-dropzone{
+    transition: all .5s ease;
+}
