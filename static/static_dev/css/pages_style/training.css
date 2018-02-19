@@ -8,7 +8,6 @@
     opacity: 1;
     transition: all .3s ease;
 }
-
 .button_container{
     margin: 1vw 0 0 0;
     padding: 0;
@@ -16,7 +15,7 @@
 #test_block{
     height: 80vh;
 }
-#progress, #condition_test{
+.progress_task, .condition{
     opacity: 0;
     visibility: hidden;
 }
@@ -48,10 +47,8 @@
     display: none;
 }
 
-
-
-
 /*style for connection definition */
+
 #connection_definition{
     height: 85vh;
 }
@@ -69,55 +66,60 @@
     height: 20%;
     margin: 2% 0;
 }
+.connection_block div:first-of-type li{
+    text-align: center;
 
-
-
-
-
-
-
+}
 .drag-drop{
     z-index: 11;
+    position: relative;
 }
 .dropzone{
-    background-color: #ccc;
-    border: dashed 4px transparent;
+    background-color: rgba(166, 170, 166, 0.35);
+    border: dashed 3px transparent;
     border-radius: 4px;
-    transition: background-color 0.3s;
-}
-.dropzone_style {
-    height: 70px;
+    transition: all .3s;
 }
 
 .drop-active {
-  border-color: #aaa;
+    background: white;
+    border-color: #aaa;
 }
-
 .drop-target {
-  background-color: #29e;
+  background-color: #6DEE68;
   border-color: #fff;
   border-style: solid;
 }
 
 .drag-drop {
-  /*display: inline-block;*/
   color: #fff;
   background-color: #29e;
   -webkit-transform: translate(0px, 0px);
           transform: translate(0px, 0px);
   transition: background-color 0.3s;
 }
-
-.drag-drop.can-drop {
-  color: #000;
-  background-color: #4e4;
-}
-
 .cant-drop{
-    color: #000;
+    border:none;
     background-color:#EE5C57;
 }
-
 .transition-dropzone{
     transition: all .5s ease;
 }
+
+
+
+#concepts_block {
+    position: relative;
+    left:-150%;
+    transition-duration: 1s;
+}
+#dropzones_block{
+    opacity: 0;
+}
+#definition_block {
+    position: relative;
+    right:-150%;
+    transition-duration: 1s;
+}
+
+
