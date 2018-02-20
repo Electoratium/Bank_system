@@ -105,13 +105,10 @@
 .transition-dropzone{
     transition: all .5s ease;
 }
-
-
-
 #concepts_block {
     position: relative;
     left:-150%;
-    transition-duration: 1s;
+    transition-duration: 1.5s;
 }
 #dropzones_block{
     opacity: 0;
@@ -119,7 +116,17 @@
 #definition_block {
     position: relative;
     right:-150%;
-    transition-duration: 1s;
+    transition-duration: 1.5s;
 }
 
 
+/*styles for exercises */
+#exercises{
+    height: 85vh;
+
+}
+
+#exercises .condition_block{
+    height: 65%;
+
+}
