@@ -6,6 +6,8 @@ $(document).ready(function(){
     form.on('submit',function (event) {
         event.preventDefault();
 
+        document.querySelector('.calculation_container').classList.remove('remove_content');
+
         //element[0] -  csrf token
         var variant = this.elements[1].value;
         var coef;
@@ -132,7 +134,7 @@ $(document).ready(function(){
                 var aver_rate_cp_c = get_aver_data_from_cp(2, average_rate_for_cp[2]);
                 var aver_equation_res = [aver_rate_cp_a,aver_rate_cp_b,aver_rate_cp_c];
 
-                $('.average_rate_portf')[0].innerHTML = "<span>K<sub>p</sub><sup>сер.</sup></span>: " + average_rage_portf;
+                $('.average_rate_portf')[0].innerHTML = "<span class='average'>K<sub>p</sub></span>: " + average_rage_portf;
 
                 function get_aver_data_from_cp(position_cp, res) {
                     var result_string = "(";
@@ -434,7 +436,7 @@ $(document).ready(function(){
                 //insert data equation average income portfolio
 
                 // var market_income
-                $('.avrg_income_portfolio')[0].innerHTML = "<span>k<sup>сер.</sup><sub>m</sub></span> = (" + market[0] + " + " + market[1] + " + " + market[3] + " + " +
+                $('.avrg_income_portfolio')[0].innerHTML = "<span class='average'>k<sub>m</sub></span> = (" + market[0] + " + " + market[1] + " + " + market[3] + " + " +
                     + market[4] + ") / 5 =" + average_market;
 
 

@@ -24,7 +24,7 @@
             <strong>Сталася помилка в роботі програми.</strong>
         </div>
     </div>
-    <div class="row col-md-10 justify-content-center calculation_container">
+    <div class="row col-md-10 justify-content-center calculation_container remove_content">
         <nav class="navigation-menu">
             <div class="visib-cont"></div>
             <div id="burger">
@@ -67,10 +67,10 @@
                     <thead>
                         <tr>
                             <th>Рік</th>
-                            <th >ЦП А, Ка</th>
-                            <th>ЦП Б, Кb</th>
-                            <th>ЦП С, Кс</th>
-                            <th>Ринок, Кт</th>
+                            <th >ЦП А,% Ка</th>
+                            <th>ЦП Б,% Кb</th>
+                            <th>ЦП С,% Кс</th>
+                            <th>Ринок,% Кт</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -151,7 +151,7 @@
                 <div class="row col-md-10 justify-content-center">
                     <p>Середню ставку прибутку для кожного виду ЦП розраховуємо як середню величину прибутку
                         за п'ятирічний період . У даному випадку ставка прибутку
-                        (k<sub>сер.</sub>) за цінними паперами буде становити:
+                        ( <span class="average">k</span> ) за цінними паперами буде становити:
                     </p>
                     <div class="row col-md-6">
                         <ul>
@@ -160,7 +160,7 @@
                             <li>Цінні папери С: <span class="aver_rate_inc_c"></span></li>
                         </ul>
                     </div>
-                    <p class="row col-12">Реалізована ставка прибутку за портфелем (K<sub> сер.</sub>), складеним з цінних паперів «А», «Б» і «С»,
+                    <p class="row col-12">Реалізована ставка прибутку за портфелем ( <span class="average">k<sub>p</sub></span> ), складеним з цінних паперів «А», «Б» і «С»,
                         розраховується за формулою:</p>
                     <div class="row col-6 mx-auto">
                         <div class="row col-12 justify-content-center">
@@ -178,11 +178,11 @@
                     <thead>
                         <tr>
                             <th>Рік</th>
-                            <th >ЦП А, Ка</th>
+                            <th >ЦП А,% Ка</th>
                             <th >W<sub>a</sub></th>
-                            <th>ЦП Б, Кb</th>
+                            <th>ЦП Б,% Кb</th>
                             <th >W<sub>b</sub></th>
-                            <th>ЦП С, Кс</th>
+                            <th>ЦП С,% Кс</th>
                             <th >W<sub>с</sub></th>
                             <th>(K<sub> p</sub>), %</th>
                         </tr>
@@ -276,14 +276,14 @@
                 </h2>
                 <p class="row col-md-12">
                     Граничні значення можливих ставок прибутковості цінних паперів та  портфеля з ймовірністю 99,73%
-                    будуть в діапазоні від (-З  + <span>k<sub>сер.</sub></span> )  до (+ З + <span>k<sub>сер.</sub></span> )
+                    будуть в діапазоні від (-З <span>&sigma;</span> + <span class="average">k</span> )  до (+ З <span>&sigma;</span> + <span class="average">k</span> )
                 </p>
                 <table class="table table-hover">
                     <thead>
                         <tr>
                             <th>Найменнування:</th>
-                            <th>-З  + <span>k<sub>сер.</sub></span></th>
-                            <th >+ З + <span>k<sub>сер.</sub></span></th>
+                            <th>-З <span>&sigma;</span> + <span class="average">k</span></th>
+                            <th >+ З <span>&sigma;</span> + <span class="average">k</span></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -340,7 +340,7 @@
                             <th><span>ЦП<sub>Б</sub>(Y),%</span></th>
                             <th>XY</th>
                             <th><span>X<sup>2</sup></span></th>
-                            <th><span>X<sup>2</sup></span></th>
+                            <th><span>Y<sup>2</sup></span></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -413,7 +413,7 @@
                             <th><span>ЦП<sub>C</sub>(Y),%</span></th>
                             <th>XY</th>
                             <th><span>X<sup>2</sup></span></th>
-                            <th><span>X<sup>2</sup></span></th>
+                            <th><span>Y<sup>2</sup></span></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -486,7 +486,7 @@
                             <th><span>ЦП<sub>С</sub>(Y),%</span></th>
                             <th>XY</th>
                             <th><span>X<sup>2</sup></span></th>
-                            <th><span>X<sup>2</sup></span></th>
+                            <th><span>Y<sup>2</sup></span></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -572,12 +572,12 @@
                     <ul>
                         <li>де: n - кількість періодів спостереження;</li>
                         <li>k<sub>it</sub> - дохідність і-го цінного паперу в період t;</li>
-                        <li>k<sup>сер.</sup><sub>i</sub> - середня дохідність і-го цінного паперу за весь час;</li>
+                        <li><span class="average">k<sub>i</sub></span> - середня дохідність і-го цінного паперу за весь час;</li>
                         <li>k<sub>mt</sub> – ринкова дохідність у періоді t;</li>
-                        <li><span>k<sup>сер.</sup><sub>m</sub></span> – середня дохідність ринкового портфеля за весь час.</li>
+                        <li><span class="average">k<sub>m</sub></span> – середня дохідність ринкового портфеля за весь час.</li>
                     </ul>
                 </div>
-                <p class="row col-12">Середня дохідність ринкового портфеля &nbsp;<span>k<sup>сер.</sup><sub>m</sub></span></p>
+                <p class="row col-12">Середня дохідність ринкового портфеля &nbsp;<span class="average">k<sub>m</sub></span></p>
                 <p class="row col-12 avrg_income_portfolio"></p>
                 <div class="row col-12 justify-content-center betta_coeficients">
                     <p class="row col-12 betta_a"></p>

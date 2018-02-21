@@ -2,7 +2,7 @@
     overflow: hidden;
 }
 .initial-form{
-    display: none!important;
+    /*display: none!important;*/
     justify-content: center;
     margin-top: 25vh;
     opacity: 1;
@@ -125,8 +125,30 @@
     height: 85vh;
 
 }
-
 #exercises .condition_block{
     height: 65%;
-
 }
+#exercises .next-test-btn{
+    height: 5%;
+}
+.hint_container{
+    position: absolute;
+    right: -125%;
+    top:10%;
+    width: 25%;
+}
+.answer_container{
+    position: relative;
+    top:100%;
+    transition-duration: .8s;
+}
+.show_hint_container{
+    right: -25%;
+    transition-duration: .8s;
+}
+.show_answer_container{
+    top:0;
+}
+
+
+

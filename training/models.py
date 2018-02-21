@@ -33,8 +33,8 @@ class Exercise(models.Model):
     title = models.CharField(max_length=64, blank=True, default='Задача')
     condition = models.CharField(max_length=500, blank=True)
     correct_answer = models.FloatField(default=0, blank=True)
-    hint = models.CharField(max_length=150, blank=True)
-    resolving_hint = models.CharField(max_length=200, blank=True)
+    hint = models.CharField(max_length=300, blank=True)
+    resolving_hint = models.CharField(max_length=300, blank=True)
 
     class Meta:
         verbose_name = "Задача"

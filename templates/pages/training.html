@@ -7,6 +7,7 @@
 {% endblock %}
 {% block content %}
     <div class="row col-10 initial-form">
+
         <form class="form justify-content-center" action="{% url 'start_training' %}">
             {% csrf_token %}
             <div class="form-group">
@@ -90,25 +91,42 @@
             <button type="button" class="btn btn-outline-secondary">Наступне завдання</button>
         </div>
     </div>
-    <div class="row col-md-8" id="exercises">
-        <div class="row col-12 justify-content-center transition align-items-center">
-            <p>Завдання 1|4</p>
+    <div class="row col-md-8 delete_element" id="exercises">
+        <div class="row col-12 justify-content-center transition align-items-center progress_task progress_block">
+            <p></p>
         </div>
-        <div class="row col-12 justify-content-center transition condition_block align-items-center">
-            <h3>Визначити середньорічну ватість цінного паперу Б, якщо індекс інфіляції складає: 20%, купівельна спрможність населення: 20421грн / людину</h3>
+        <div class="hint_container transition">
+             <a class="btn btn-outline-warning" data-toggle="collapse" href="#hint" role="button" aria-expanded="false" aria-controls="hint">
+                Підказка
+             </a>
+            <div class="collapse" id="hint">
+              <div class="card card-body">
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
+                  Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                  Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+
+                  Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                  Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+              </div>
+            </div>
         </div>
-        <div class="row col-4 justify-content-center form-group">
-            <form class="form-inline">
+        <div class="row col-12 justify-content-center transition condition_block align-items-center condition">
+            <div class="row col-12 justify-content-center">
+                <h3 class="row col-12 justify-content-center"></h3>
+                <h4></h4>
+            </div>
+        </div>
+        <div class="row col-12 justify-content-center transition answer_container">
+            <form class="form-inline form-answer">
                 <div class="input-group">
-                    <div class="input-group-addon">Відповідь</div>
                     <input id="answer" class="form-control" type="number" maxlength="10" step="0.001" placeholder="Відповідь">
+                    <button type="button" class="btn btn-outline-secondary">Перевірити</button>
                 </div>
-                <button type="button" class="btn btn-outline-secondary">Submit</button>
             </form>
         </div>
 
 
-        <div class="row col-12 justify-content-end next-test-btn transition">
+        <div class="row col-12 justify-content-end next-test-btn hide_element transition">
             <button type="button" class="btn btn-outline-secondary">Наступна задача</button>
         </div>
     </div>

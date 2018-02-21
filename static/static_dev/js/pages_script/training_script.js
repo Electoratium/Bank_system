@@ -3,7 +3,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     var name_form = document.querySelector('.form');
 
-
     name_form.addEventListener('submit', function (event) {
         event.preventDefault();
         //hide form
@@ -380,7 +379,56 @@ document.addEventListener("DOMContentLoaded", function() {
                     }
                 }
                 // setTimeout(connection_definition, 1000);
+                    function exercise_block(){
+                        var exercises = data['exercises'];
+                        var data_task = {
+                            current_task: 0,
+                            nmb_mistakes: 0
+                        };
+                        var nmb_exercises = exercises['titles'].length;
 
+
+
+                        //html el
+                        var exercises_block = document.querySelector('#exercises');
+                        var progress_block = document.querySelector('#exercises .progress_block');
+                        var hint_block = document.querySelector('#exercises .hint_container');
+                        var condition_block = document.querySelector('#exercises .condition_block');
+                        var input_block = document.querySelector('#exercises .answer_container');
+                        var button = document.querySelector('#exercises .next-test-btn');
+
+
+                        exercises_block.classList.remove('delete_element');
+
+
+                        function toggle_visibility_block() {
+                            progress_block.classList.toggle('progress_task');
+                            condition_block.classList.toggle('condition');
+                            input_block.classList.toggle('show_answer_container');
+                        }
+                        setTimeout(toggle_visibility_block, 50);
+
+                        function fill_exercises_block() {
+                            exercises_block.firstElementChild.innerHTML = "Задача " + (data_task["current_task"] + 1) + "/" + nmb_exercises;
+
+                            document.querySelector('#exercises .condition_block div h3').innerHTML = exercises['titles'][data_task['current_task']];
+                            document.querySelector('#exercises .condition_block div h4').innerHTML = exercises['conditions'][data_task['current_task']];
+                        }
+                        fill_exercises_block();
+
+
+                        console.log(exercises);
+
+
+                        function toggle_visibility_hint_block() {
+                            hint_block.classList.toggle('show_hint_container');
+                        }
+
+                        setTimeout(toggle_visibility_hint_block, 1000)
+
+
+                    }
+                    exercise_block();
 
 
 
