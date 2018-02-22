@@ -381,6 +381,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 // setTimeout(connection_definition, 1000);
                     function exercise_block(){
                         var exercises = data['exercises'];
+                        var correct_answers = exercises['correct_answers'];
+                        var hints = exercises['hints'];
+                        var resolving_hints = exercises['resolving_hints'];
                         var data_task = {
                             current_task: 0,
                             nmb_mistakes: 0
@@ -395,6 +398,8 @@ document.addEventListener("DOMContentLoaded", function() {
                         var hint_block = document.querySelector('#exercises .hint_container');
                         var condition_block = document.querySelector('#exercises .condition_block');
                         var input_block = document.querySelector('#exercises .answer_container');
+                        var input = document.getElementById('answer');
+                        var check_result_button = document.querySelector('#exercises .input-group .btn');
                         var button = document.querySelector('#exercises .next-test-btn');
 
 
@@ -417,14 +422,62 @@ document.addEventListener("DOMContentLoaded", function() {
                         fill_exercises_block();
 
 
-                        console.log(exercises);
-
-
                         function toggle_visibility_hint_block() {
                             hint_block.classList.toggle('show_hint_container');
                         }
 
-                        setTimeout(toggle_visibility_hint_block, 1000)
+
+                        input_block.addEventListener('transitionend', set_event_listener);
+
+                        function set_event_listener(){
+                            input_block.removeEventListener('transitionend', set_event_listener);
+
+                            check_result_button.addEventListener('click', check_result);
+                        }
+
+
+                        function check_result(event) {
+                            var correct_answer = parseFloat(correct_answers[data_task['current_task']].toFixed(2));
+                            var cur_answer = parseFloat(parseFloat(input.value).toFixed(2));
+
+                            if(!isNaN(cur_answer)){
+                                event.preventDefault();
+
+                                if(((correct_answer + 0.1) >= cur_answer) && (cur_answer >= (correct_answer - 0.1))){
+                                    input.classList.remove('is-invalid');
+                                    input.classList.add('is-valid');
+                                    input.setAttribute('disabled', 'disabled');
+                                    check_result_button.setAttribute('disabled', 'disabled');
+
+
+                                    button.classList.remove('hide_element');
+                                }
+                                else{
+                                    data_task['nmb_mistakes'] += 1;
+
+                                    input.classList.add('is-invalid');
+                                    //добавь сплющивание формы при неверном ответе
+
+                                    if(data_task['nmb_mistakes'] == 1 ){
+                                        document.querySelector('#exercises .card').innerHTML = hints[data_task['current_task']];
+                                        toggle_visibility_hint_block()
+                                    }
+
+                                    if(data_task['nmb_mistakes'] == 2 ){
+                                        document.querySelector('#exercises .card').innerHTML = resolving_hints[data_task['current_task']];
+                                    }
+
+
+
+
+                                }
+
+
+
+                            }
+
+
+                        }
 
 
                     }

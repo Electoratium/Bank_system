@@ -138,8 +138,9 @@
     width: 25%;
 }
 .answer_container{
-    position: relative;
-    top:100%;
+    /*position: relative;*/
+    opacity:0;
+    visibility: hidden;
     transition-duration: .8s;
 }
 .show_hint_container{
@@ -147,7 +148,8 @@
     transition-duration: .8s;
 }
 .show_answer_container{
-    top:0;
+    opacity: 1;
+    visibility: visible;
 }
 
 

@@ -95,18 +95,12 @@
         <div class="row col-12 justify-content-center transition align-items-center progress_task progress_block">
             <p></p>
         </div>
-        <div class="hint_container transition">
+        <div class="hint_container  transition">
              <a class="btn btn-outline-warning" data-toggle="collapse" href="#hint" role="button" aria-expanded="false" aria-controls="hint">
                 Підказка
              </a>
             <div class="collapse" id="hint">
               <div class="card card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                  Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                  Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-
-                  Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                  Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
               </div>
             </div>
         </div>
@@ -119,8 +113,10 @@
         <div class="row col-12 justify-content-center transition answer_container">
             <form class="form-inline form-answer">
                 <div class="input-group">
-                    <input id="answer" class="form-control" type="number" maxlength="10" step="0.001" placeholder="Відповідь">
-                    <button type="button" class="btn btn-outline-secondary">Перевірити</button>
+                    <input id="answer" class="form-control" type="number" step="0.001" placeholder="Відповідь" required>
+                    <button type="submit" class="btn btn-outline-secondary transition">Перевірити</button>
+                    <div class="valid-feedback">Правильна відповідь</div>
+                    <div class="invalid-feedback">Відповідь не вірна</div>
                 </div>
             </form>
         </div>
