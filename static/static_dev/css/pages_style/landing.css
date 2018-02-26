@@ -11,16 +11,11 @@ html,body{
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f9ff', endColorstr='#f0f9ff',GradientType=0 ); /* IE6-9 */
 }
 
-
-.container{
-
-}
 .logo{
 	display: block;
 	position: absolute;
 	width: 10vw;
 	z-index: 10;
-
 }
 .logo  img{
     display: block;
@@ -36,7 +31,7 @@ html,body{
 .link{
 	border-bottom: 3px solid black;
 	position: relative;
-	height:33vh;
+	height:32vh;
 }
 .link:last-child{
 	border-bottom: none;
@@ -52,9 +47,9 @@ html,body{
 .link_title{
 	position: relative;
 	display: inline-block;
-	font-size: 5vw;
+	font-size: 5rem;
 	color: black;
-	font-family: 'Comfortaa', cursive;
+	font-family: 'Comfortaa';
 }
 .link_descr{
 	opacity: 0;
@@ -63,7 +58,7 @@ html,body{
 	bottom: 0;
 	font-family: 'Yanone Kaffeesatz', sans-serif;
 	color: black;
-	font-size: 2vw;
+	font-size: 2rem;
 	transition: 0.3s ease-in-out 0.1s;
 	text-align: center;
 

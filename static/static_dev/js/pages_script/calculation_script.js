@@ -151,10 +151,7 @@ $(document).ready(function(){
 
                 }
 
-
-
                 //add data to equation
-
                 for(var p = 0; p < aver_equation_res.length;p++){
 
                     html_element_equation_aver_cp[p][0].innerHTML = aver_equation_res[p];
@@ -347,12 +344,12 @@ $(document).ready(function(){
                     '.table-cpa-cpb .cor-cpa-cpb', '.table-cpa-cpb .cor-cpa-square', '.table-cpa-cpb .cor-cpb-square',
                     '.table-cpa-cpb .sum', '.table-cpa-cpb .avrg');
 
-                // //for CP A & CP C
+                //for CP A & CP C
                 update_correlation_table('.table-cpa-cpc .cor-cpa', '.table-cpa-cpc .cor-cpc', 0, 2, 'cpa_cpc',
                     '.table-cpa-cpc .cor-cpa-cpc', '.table-cpa-cpc .cor-cpa-square', '.table-cpa-cpc .cor-cpc-square',
                     '.table-cpa-cpc .sum', '.table-cpa-cpc .avrg');
 
-                // //for CP B & CP C
+                //for CP B & CP C
                 update_correlation_table('.table-cpb-cpc .cor-cpb', '.table-cpb-cpc .cor-cpc', 1, 2, 'cpb_cpc',
                     '.table-cpb-cpc .cor-cpb-cpc', '.table-cpb-cpc .cor-cpb-square', '.table-cpb-cpc .cor-cpc-square',
                     '.table-cpb-cpc .sum', '.table-cpb-cpc .avrg');
@@ -459,7 +456,7 @@ $(document).ready(function(){
                     "( " + market[3] + " - " + average_market + ")<sup>2</sup>" + " + " +
                     "( " + market[4] + " - " + average_market + ")<sup>2</sup>" + ")";
 
-                $('.betta_a')[0].innerHTML = "<span>&beta;<sub>a</sub></span>" + " = " + top_part_equation + " / " + bottom_part_equation+ " = " + betta_coef[0];
+                $('.betta_a')[0].innerHTML = "<span><span>&beta;<sub>a</sub></span>" + " = " + top_part_equation + " / " + bottom_part_equation+ " = " + betta_coef[0] + "</span>";
 
 
 
@@ -470,7 +467,6 @@ $(document).ready(function(){
                     ' * 0,3 + ' + betta_coef[2] + ' * 0,27 = ' + betta_coef[3];
 
                 //add data to calultate CAPM
-
                 var capm_equation = "<span>k<sub>t</sub></span>" + " = " + free_risk_cp + " + (" + average_market + " - "
                     + free_risk_cp + ")" + " * " + betta_coef[3] + " = " + res_capm + "%";
 

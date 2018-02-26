@@ -1,11 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Comfortaa|Ubuntu');
-
+h2{
+    font-weight: bold;
+    font-size: 1.5rem;
+}
 ul{
     list-style: none;
+
+}
+ul, p{
+    padding: 0!important;
 }
 .wrapper_content{
     position: relative;
     font-family: 'Comfortaa', cursive;
+}
+.form-container{
+    margin-top: 5%;
 }
 .form-title{
     font-size: 1.5rem;
@@ -24,6 +34,7 @@ ul{
     transform: translateX(-150%);
     cursor: pointer;
     z-index: 5;
+    top: 15%;
 }
 .showing_animation{
     animation: show_elements .25s ease-out 1s;
@@ -40,7 +51,7 @@ ul{
 
 #menu{
     position: fixed;
-    margin-top: 4vw;
+    top:30%;
     left:-100%;
     transition: left .5s ease;
     z-index: 10;
@@ -109,7 +120,7 @@ ul{
     display: block;
 }
 .average{
-    border-top:0.5px solid black;
+    border-top: 0.5px solid black;
 }
 .remove_content{
     display: none;

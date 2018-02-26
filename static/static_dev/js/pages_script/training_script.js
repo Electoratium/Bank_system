@@ -6,9 +6,14 @@ document.addEventListener("DOMContentLoaded", function() {
     name_form.addEventListener('submit', function (event) {
         event.preventDefault();
         //hide form
+        document.getElementById('start_test_btn').setAttribute('disabled', 'disabled');
         var user_name_form = document.querySelector('.initial-form');
-        user_name_form.className += ' hide_element';
-        setTimeout(function(){ user_name_form.className += ' delete_element'}, 300);
+        user_name_form.classList.add('hide_element');
+
+        setTimeout(function(){
+            user_name_form.classList.add('delete_element')}
+            , 300);
+
         var user_name = document.querySelector('#user_name').value;
         var csrf_token = document.querySelector('.form [name="csrfmiddlewaretoken"]').value;
         var Url = name_form.getAttribute('action');
@@ -21,12 +26,128 @@ document.addEventListener("DOMContentLoaded", function() {
             data: data,
             cache: true,
             success:function (data) {
-                //show test block
+
+                var result_data = {
+                    test: "0 / 0",
+                    connection_definition: "0 / 0",
+                    exercises: "0 / 0"
+                };
+                function start_training() {
+                    if(data.hasOwnProperty('Not enough data in db')){
+                        document.getElementById('error').classList.remove('delete_element');
+                    }
+                    else{
+                        if(check_next_task('tests')){
+                            test_block()
+                        }
+                        else if(check_next_task('connections_definition')){
+                            connection_definition()
+                        }
+                        else {
+                            exercise_block()
+                        }
+                    }
+                }
+                setTimeout(start_training, 500);
+
+
+                function manage_tasks(name_task, result_task) {
+                    var correct_answers = 0;
+                    if(name_task == 'exercises'){
+
+                        for(var mistake of result_task['nmb_mistakes']){
+                            if(mistake == 0){
+                                correct_answers++;
+                            }
+                        }
+
+                        result_data['exercises'] = correct_answers + " / " + result_task['nmb_exercises'];
+
+                        update_data_db(result_data);
+                        setTimeout(display_results, 500);
+                    }
+
+                    else if(name_task == "connection_definition"){
+                        result_data['connection_definition'] = result_task + " / " + result_task;
+
+
+                        if(check_next_task('exercises')){
+                            setTimeout(exercise_block, 1000);
+                        }
+                        else{
+                            update_data_db(result_data);
+                            setTimeout(display_results, 500);
+                        }
+                    }
+
+                    else if(name_task == "tests"){
+                        result_data['test'] = result_task['nmb_correct_test'] + " / " + result_task['nmb_test'];
+
+                        if(check_next_task('connections_definition')){
+                            setTimeout(connection_definition, 1000);
+                        }
+                        else if(check_next_task('exercises')){
+                            setTimeout(exercise_block, 1000);
+                        }
+                        else{
+                            update_data_db(result_data);
+                            setTimeout(display_results, 500);
+                        }
+                    }
+                }
+
+
+                function display_results() {
+                    //show table
+                    document.getElementById('results').classList.remove('delete_element');
+
+
+                    var table_cells = document.querySelector('#results .table').rows[1].cells;
+
+
+                    var iterator = 1;
+                    for(var task in result_data){
+                        table_cells[iterator].innerHTML = result_data[task];
+                        iterator++;
+                    }
+                }
+
+                function update_data_db(results_data) {
+                    var csrf_token = document.querySelector('#hidden_form input[name="csrfmiddlewaretoken"]').value;
+                    var url = document.querySelector('#hidden_form').getAttribute('action');
+
+                    var data = {
+                        test: results_data['test'],
+                        connection_definition: results_data['connection_definition'],
+                        exercises: results_data['exercises'],
+                        "csrfmiddlewaretoken": csrf_token
+                    };
+
+                    $.ajax({
+                        url: url,
+                        type: 'POST',
+                        data: data,
+                        cache: true,
+                        error: function () {
+                            console.log('Error connection with db denied');
+                        }
+                    });
+                }
+
+
+                function check_next_task(prop_name) {
+                    return data.hasOwnProperty(prop_name)
+                }
+
+
                 function test_block() {
                     var test_data = data['tests'];
                     var current_test = 1;
                     var nmb_test = test_data['correct_answers'].length;
-                    var nmb_correct_test = 0;
+                    var result = {
+                        nmb_correct_test: 0,
+                        nmb_test: nmb_test
+                    }
 
                     //html el
                     var completed_tests_container = document.querySelector('#test_block .progress_task');
@@ -75,7 +196,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         var answer = el.getAttribute('data-answer');
 
                         if (parseInt(answer) === current_answer) {
-                            nmb_correct_test++;
+                            result['nmb_correct_test']++;
                             return 1;
                         }
                         return 0;
@@ -103,6 +224,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     }
 
                     function change_visibility_button() {
+                        button.firstElementChild.removeAttribute('disabled');
                         button.classList.toggle('hide_element');
 
                         button.addEventListener('click', next_test);
@@ -112,6 +234,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         current_test++;
 
                         //hide button
+                        button.firstElementChild.setAttribute('disabled', "disabled");
                         button.classList.toggle('hide_element');
 
                         change_visibility_test_block();
@@ -134,13 +257,11 @@ document.addEventListener("DOMContentLoaded", function() {
                                 }
                             ,800);
 
-                            return nmb_correct_test;
+                            manage_tasks('tests', result);
                         }
                         button.removeEventListener('click', next_test);
                     }
                 }
-
-                // test_block();
 
                 function connection_definition() {
                     var connection_definition_data = data['connections_definition'];
@@ -282,6 +403,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     }
 
                     function show_button() {
+                        button.firstElementChild.removeAttribute('disabled');
                         button.classList.remove('hide_element');
 
 
@@ -297,7 +419,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
                         hide_connection_block();
                         //hide button
+                        button.firstElementChild.setAttribute('disabled', "disabled");
                         button.classList.add('hide_element');
+
                         if(current_task <= nmb_connections) {
                             setTimeout(restart_connection, 1000);
                             setTimeout(fill_elements, 1000);
@@ -307,6 +431,9 @@ document.addEventListener("DOMContentLoaded", function() {
                             setTimeout(function(){
                                 connection_block.classList.add('delete_element')
                             }, 1000);
+
+                            //update data for db
+                            manage_tasks('connection_definition', nmb_connections)
                         }
                     }
 
@@ -378,110 +505,146 @@ document.addEventListener("DOMContentLoaded", function() {
                         definition_block.style.right = '-100%';
                     }
                 }
-                // setTimeout(connection_definition, 1000);
-                    function exercise_block(){
-                        var exercises = data['exercises'];
-                        var correct_answers = exercises['correct_answers'];
-                        var hints = exercises['hints'];
-                        var resolving_hints = exercises['resolving_hints'];
-                        var data_task = {
-                            current_task: 0,
-                            nmb_mistakes: 0
-                        };
-                        var nmb_exercises = exercises['titles'].length;
 
 
+                function exercise_block(){
+                    var exercises = data['exercises'];
+                    var correct_answers = exercises['correct_answers'];
+                    var hints = exercises['hints'];
+                    var resolving_hints = exercises['resolving_hints'];
+                    var data_task = {
+                        current_task: 0,
+                        nmb_mistakes: 0
+                    };
+                    var nmb_exercises = exercises['titles'].length;
 
-                        //html el
-                        var exercises_block = document.querySelector('#exercises');
-                        var progress_block = document.querySelector('#exercises .progress_block');
-                        var hint_block = document.querySelector('#exercises .hint_container');
-                        var condition_block = document.querySelector('#exercises .condition_block');
-                        var input_block = document.querySelector('#exercises .answer_container');
-                        var input = document.getElementById('answer');
-                        var check_result_button = document.querySelector('#exercises .input-group .btn');
-                        var button = document.querySelector('#exercises .next-test-btn');
+                    var result_exercises = {
+                        nmb_mistakes: [],
+                        nmb_exercises: nmb_exercises
+                    };
+
+                    //html el
+                    var exercises_block = document.querySelector('#exercises');
+                    var progress_block = document.querySelector('#exercises .progress_block');
+                    var hint_block = document.querySelector('#exercises .hint_container');
+                    var condition_block = document.querySelector('#exercises .condition_block');
+                    var input_block = document.querySelector('#exercises .answer_container');
+                    var input = document.getElementById('answer');
+                    var check_result_button = document.querySelector('#exercises .input-group .btn');
+                    var button = document.querySelector('#exercises .next-test-btn');
 
 
-                        exercises_block.classList.remove('delete_element');
+                    exercises_block.classList.remove('delete_element');
 
+                    function next_task() {
+                        result_exercises['nmb_mistakes'].push(data_task['nmb_mistakes']);
 
-                        function toggle_visibility_block() {
-                            progress_block.classList.toggle('progress_task');
-                            condition_block.classList.toggle('condition');
-                            input_block.classList.toggle('show_answer_container');
+                        data_task['current_task'] += 1;
+                        data_task['nmb_mistakes'] = 0;
+
+                        toggle_visibility_block();
+                        //hide hint button
+                        hint_block.classList.remove('show_hint_container');
+                        //hide next_btn
+                        button.firstElementChild.setAttribute('disabled', "disabled");
+                        button.classList.add('hide_element');
+
+                        if((data_task['current_task']) < nmb_exercises) {
+                            setTimeout(fill_exercises_block, 500);
+                            setTimeout(reset_answer_field, 500);
+                            setTimeout(toggle_visibility_block, 500);
                         }
-                        setTimeout(toggle_visibility_block, 50);
+                        else{
+                            setTimeout(function(){
+                                exercises_block.classList.add('delete_element');
+                                }, 500);
 
-                        function fill_exercises_block() {
-                            exercises_block.firstElementChild.innerHTML = "Задача " + (data_task["current_task"] + 1) + "/" + nmb_exercises;
-
-                            document.querySelector('#exercises .condition_block div h3').innerHTML = exercises['titles'][data_task['current_task']];
-                            document.querySelector('#exercises .condition_block div h4').innerHTML = exercises['conditions'][data_task['current_task']];
+                            //update data for response
+                            manage_tasks('exercises', result_exercises);
                         }
-                        fill_exercises_block();
-
-
-                        function toggle_visibility_hint_block() {
-                            hint_block.classList.toggle('show_hint_container');
-                        }
-
-
-                        input_block.addEventListener('transitionend', set_event_listener);
-
-                        function set_event_listener(){
-                            input_block.removeEventListener('transitionend', set_event_listener);
-
-                            check_result_button.addEventListener('click', check_result);
-                        }
-
-
-                        function check_result(event) {
-                            var correct_answer = parseFloat(correct_answers[data_task['current_task']].toFixed(2));
-                            var cur_answer = parseFloat(parseFloat(input.value).toFixed(2));
-
-                            if(!isNaN(cur_answer)){
-                                event.preventDefault();
-
-                                if(((correct_answer + 0.1) >= cur_answer) && (cur_answer >= (correct_answer - 0.1))){
-                                    input.classList.remove('is-invalid');
-                                    input.classList.add('is-valid');
-                                    input.setAttribute('disabled', 'disabled');
-                                    check_result_button.setAttribute('disabled', 'disabled');
-
-
-                                    button.classList.remove('hide_element');
-                                }
-                                else{
-                                    data_task['nmb_mistakes'] += 1;
-
-                                    input.classList.add('is-invalid');
-                                    //добавь сплющивание формы при неверном ответе
-
-                                    if(data_task['nmb_mistakes'] == 1 ){
-                                        document.querySelector('#exercises .card').innerHTML = hints[data_task['current_task']];
-                                        toggle_visibility_hint_block()
-                                    }
-
-                                    if(data_task['nmb_mistakes'] == 2 ){
-                                        document.querySelector('#exercises .card').innerHTML = resolving_hints[data_task['current_task']];
-                                    }
-
-
-
-
-                                }
-
-
-
-                            }
-
-
-                        }
-
-
                     }
-                    exercise_block();
+
+                    function reset_answer_field() {
+                        //remove show hint
+                        document.querySelector('.hint_container .btn').classList.add('collapsed');
+                        document.querySelector('.hint_container .collapse').classList.remove('show');
+
+                        input.removeAttribute('disabled');
+                        check_result_button.removeAttribute('disabled');
+                        input.classList.remove('is-valid');
+                        input.value = "";
+                    }
+
+                    function toggle_visibility_block() {
+                        progress_block.classList.toggle('progress_task');
+                        condition_block.classList.toggle('condition');
+                        input_block.classList.toggle('show_answer_container');
+                    }
+                    setTimeout(toggle_visibility_block, 50);
+
+                    function fill_exercises_block() {
+                        exercises_block.firstElementChild.innerHTML = "Задача " + (data_task["current_task"] + 1) + "/" + nmb_exercises;
+
+                        document.querySelector('#exercises .condition_block div h3').innerHTML = exercises['titles'][data_task['current_task']];
+                        document.querySelector('#exercises .condition_block div h4').innerHTML = exercises['conditions'][data_task['current_task']];
+                    }
+                    fill_exercises_block();
+
+
+                    function toggle_visibility_hint_block() {
+                        hint_block.classList.toggle('show_hint_container');
+                    }
+
+                    input_block.addEventListener('transitionend', set_event_listener);
+
+                    function set_event_listener(){
+                        input_block.removeEventListener('transitionend', set_event_listener);
+
+                        check_result_button.addEventListener('click', check_result);
+                    }
+
+                    function check_result(event) {
+                        var correct_answer = parseFloat(correct_answers[data_task['current_task']].toFixed(2));
+                        var cur_answer = parseFloat(parseFloat(input.value).toFixed(2));
+
+                        if(!isNaN(cur_answer)){
+                            event.preventDefault();
+
+                            if(((correct_answer + 0.1) >= cur_answer) && (cur_answer >= (correct_answer - 0.1))){
+                                input.classList.remove('is-invalid');
+                                input.classList.add('is-valid');
+                                input.setAttribute('disabled', 'disabled');
+                                check_result_button.setAttribute('disabled', 'disabled');
+
+                                //toggle visibility button
+                                button.firstElementChild.removeAttribute('disabled');
+                                button.classList.remove('hide_element');
+                                button.addEventListener('click', next_task);
+                            }
+                            else{
+                                data_task['nmb_mistakes'] += 1;
+
+                                input.classList.add('is-invalid');
+
+                                if(data_task['nmb_mistakes'] == 1 ){
+                                    document.querySelector('#exercises .card').innerHTML = hints[data_task['current_task']];
+                                    toggle_visibility_hint_block();
+
+                                }
+
+                                if(data_task['nmb_mistakes'] == 2 ){
+                                    //hide content collapse element
+                                    document.querySelector('.hint_container .btn').classList.add('collapsed');
+                                    document.querySelector('.hint_container .collapse').classList.remove('show');
+
+
+                                    document.querySelector('#exercises .card').innerHTML = resolving_hints[data_task['current_task']];
+                                }
+                            }
+                        }
+                    }
+                }
+
 
 
 

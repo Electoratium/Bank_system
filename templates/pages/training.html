@@ -3,11 +3,11 @@
 
 {% block title %}
     <link rel="stylesheet" href="{% static '/css/pages_style/training.css' %}">
+    <link rel="stylesheet" href="{% static '/css/media/training.css' %}">
     <title>Тренажер</title>
 {% endblock %}
 {% block content %}
-    <div class="row col-10 initial-form">
-
+    <div class="row col-md-10 initial-form">
         <form class="form justify-content-center" action="{% url 'start_training' %}">
             {% csrf_token %}
             <div class="form-group">
@@ -15,10 +15,13 @@
                 <input type="text"  maxlength="64" class="form-control" id="user_name" required>
             </div>
             <div class="row col-12 justify-content-center button_container">
-                <button type="submit" class="btn btn-primary">Розпочати тест</button>
+                <button type="submit" class="btn btn-primary" id="start_test_btn">Розпочати тест</button>
             </div>
         </form>
     </div>
+    <form id="hidden_form" action="{% url 'update_results' %}">
+        {% csrf_token %}
+    </form>
     <div class="row col-md-8 justify-content-center align-items-center delete_element" id="test_block">
         <div class="row col-12 justify-content-center transition progress_task">
             <p></p>
@@ -36,19 +39,17 @@
             <button type="button" class="btn btn-outline-secondary">Наступний тест</button>
         </div>
     </div>
-
-
-    <div class="row col-10 justify-content-center delete_element" id="connection_definition">
+    <div class="row col-lg-10 justify-content-center delete_element" id="connection_definition">
         <div class="row col-12 title-block">
             <div class="row col-12 justify-content-center transition progress_task">
-                <p>iuglyug</p>
+                <p></p>
             </div>
             <div class="row col-12 justify-content-center condition transition">
                 <h4>З'єднайте поняття та його визначення у правильній формі</h4>
             </div>
         </div>
         <div class="row col-12 justify-content-md-between connection_block">
-            <div class="col-md-4 transition" id="concepts_block">
+            <div class="col-4 transition" id="concepts_block">
                 <ul class="row col-12 list-group">
                     <li class="list-group-item list-group-item-light"></li>
                     <li class="list-group-item list-group-item-light"></li>
@@ -56,7 +57,7 @@
                     <li class="list-group-item list-group-item-light"></li>
                 </ul>
             </div>
-            <div class="col-md-4 transition" id="dropzones_block">
+            <div class="col-4 transition" id="dropzones_block">
                 <ul class="row col-12 list-group">
                     <li class="dropzone dropzone_style transition-dropzone" data-dropzone="1"></li>
                     <li class="dropzone dropzone_style transition-dropzone" data-dropzone="2"></li>
@@ -64,26 +65,12 @@
                     <li class="dropzone dropzone_style transition-dropzone" data-dropzone="4"></li>
                 </ul>
             </div>
-            <div class="col-md-4 transition" id="definition_block">
+            <div class="col-4 transition" id="definition_block">
                  <ul class="row col-12 list-group">
-                    <li id="drop-1" class="list-group-item list-group-item-light draggable drag-drop" data-definition="3">
-                        Def 3 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    </li>
-                    <li id="drop-2" class="list-group-item list-group-item-light draggable drag-drop" data-definition="1">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consequatur corporis
-                        dolores enim error excepturi fugit maxime minus natus nemo non optio placeat, possimus
-                        provident sed soluta suscipit tempore, ullam.
-                    </li>
-                    <li id="drop-3" class="list-group-item list-group-item-light draggable drag-drop" data-definition="4">
-                        Def 4 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        Accusantium culpa dolorum ea eligendi eveniet ex exercitationem illum iste modi, molestiae
-                    </li>
-                    <li id="drop-4" class="list-group-item list-group-item-light draggable drag-drop" data-definition="2">
-                        Def 2 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        Accusantium culpa dolorum ea eligendi eveniet ex exercitationem illum iste modi, molestiae
-                        necessitatibus nobis numquam officia perspiciatis quia quis, quo suscipit voluptatibus!
-                         necessitatibus nobis numquam officia perspiciatis quia quis, quo suscipit voluptatibus!
-                    </li>
+                    <li id="drop-1" class="list-group-item list-group-item-light draggable drag-drop" data-definition="3"></li>
+                    <li id="drop-2" class="list-group-item list-group-item-light draggable drag-drop" data-definition="1"></li>
+                    <li id="drop-3" class="list-group-item list-group-item-light draggable drag-drop" data-definition="4"></li>
+                    <li id="drop-4" class="list-group-item list-group-item-light draggable drag-drop" data-definition="2"></li>
                 </ul>
             </div>
         </div>
@@ -91,15 +78,15 @@
             <button type="button" class="btn btn-outline-secondary">Наступне завдання</button>
         </div>
     </div>
-    <div class="row col-md-8 delete_element" id="exercises">
+    <div class="row col-10 col-sm-8 delete_element" id="exercises">
         <div class="row col-12 justify-content-center transition align-items-center progress_task progress_block">
             <p></p>
         </div>
-        <div class="hint_container  transition">
+        <div class="hint_container transition">
              <a class="btn btn-outline-warning" data-toggle="collapse" href="#hint" role="button" aria-expanded="false" aria-controls="hint">
                 Підказка
              </a>
-            <div class="collapse" id="hint">
+            <div class="collapse transition" id="hint">
               <div class="card card-body">
               </div>
             </div>
@@ -126,9 +113,40 @@
             <button type="button" class="btn btn-outline-secondary">Наступна задача</button>
         </div>
     </div>
+    <div class="row col-md-10 justify-content-center align-content-center delete_element transition" id="results">
+        <h3>Результати</h3>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Тести</th>
+                <th scope="col">Мозайки</th>
+                <th scope="col">Задачі</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <th scope="col">Кількість правильних відповідей</th>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
 
+          </tbody>
+        </table>
+        <div class="row col-12 justify-content-end">
+            <a href="/training" class="btn btn-outline-info">Пройти знову</a>
+        </div>
+    </div>
 
-
+    <div class="row col-6 col-md-10 justify-content-center align-items-center delete_element" id="error">
+        <img class="img-fluid" src="{% static '/img/error/unaviable_task.png' %}" alt="error">
+        <div class="row col-12 justify-content-center">
+            <div class="alert alert-warning" role="alert">
+                <h3>Тренажер тимчасово недоступний через нестачу данних</h3>
+            </div>
+        </div>
+    </div>
 
     <script defer src="{% static '/js/pages_script/training_script.js'%}"></script>
 {% endblock %}

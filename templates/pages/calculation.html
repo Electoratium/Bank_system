@@ -5,13 +5,14 @@
     <link rel="stylesheet" href="{% static '/css/style_chart/main_style.css' %}">
 	<link rel="stylesheet" href="{% static '/css/style_chart/base_style_chart/chart_js.min.css' %}">
 	<link rel="stylesheet" href="{% static '/css/style_chart/base_style_chart/chart_legend.css' %}">
+    <link rel="stylesheet" href="{% static '/css/media/calculation.css'%}">
     <title>Розрахунок</title>
 {% endblock %}
 
 {% block content %}
-    <div class="row col-md-6 justify-content-center">
-        <div class="row col-8 justify-content-center">
-            <label class="form-title">Введіть свій номер варіанту</label>
+    <div class="row col-md-8 justify-content-center">
+        <div class="row col-12 justify-content-center form-container">
+            <label class="row col-12 justify-content-center form-title">Введіть свій номер варіанту</label>
             <form id="form_variant" action="{% url 'complete_calculate' %}" class="form-submit">
                 {% csrf_token %}
                     {{ form.variant }}
@@ -30,7 +31,7 @@
             <div id="burger">
                 <i class="fas fa-bars fa-3x"></i>
             </div>
-            <div class="row col-md-5 list-group" id="menu">
+            <div class="row col-12 col-sm-8 list-group" id="menu">
                 <ul class="nav navbar-nav list-group list-group-flush">
                     <li class="list-group-item">
                         <a href="#condition" class="list-group-item list-group-item-action"><i class="far fa-flag fa-2x menu-icons"></i> Початкові дані та умова</a>
@@ -111,7 +112,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <ul class="row col-md-8 task-list">
+                <ul class="row col-md-10 task-list">
                     <li>
                         <p>
                             а) Розрахуйте середню ставку прибутків по цим цінним паперам за період 1990-1994.
@@ -151,18 +152,22 @@
                 <div class="row col-md-10 justify-content-center">
                     <p>Середню ставку прибутку для кожного виду ЦП розраховуємо як середню величину прибутку
                         за п'ятирічний період . У даному випадку ставка прибутку
-                        ( <span class="average">k</span> ) за цінними паперами буде становити:
+                        ( <span class="average">k</span>) за цінними паперами буде становити:
                     </p>
-                    <div class="row col-md-6">
+                    <div class="row col-12 justify-content-center">
                         <ul>
                             <li>Цінні папери А: <span class="aver_rate_inc_a"></span></li>
                             <li>Цінні папери Б: <span class="aver_rate_inc_b"></span></li>
                             <li>Цінні папери С: <span class="aver_rate_inc_c"></span></li>
                         </ul>
                     </div>
-                    <p class="row col-12">Реалізована ставка прибутку за портфелем ( <span class="average">k<sub>p</sub></span> ), складеним з цінних паперів «А», «Б» і «С»,
-                        розраховується за формулою:</p>
-                    <div class="row col-6 mx-auto">
+                    <p class="row col-12">
+                        <span>
+                            Реалізована ставка прибутку за портфелем <span class="average">(k<sub>p</sub>),</span> складеним з цінних паперів «А», «Б» і «С»,
+                            розраховується за формулою:
+                        </span>
+                    </p>
+                    <div class="row col-10 mx-auto">
                         <div class="row col-12 justify-content-center">
                             <img class="img-fluid " src="{% static '/img/formula/realize_rate_income.jpg' %}" alt="realize rate income formula">
                         </div>
@@ -275,8 +280,10 @@
                     та розрахунок значення парної кореляції ЦП «А» - ЦП «Б», ЦП «А» - ЦП «С», ЦП «Б» - ЦП «С».
                 </h2>
                 <p class="row col-md-12">
-                    Граничні значення можливих ставок прибутковості цінних паперів та  портфеля з ймовірністю 99,73%
-                    будуть в діапазоні від (-З <span>&sigma;</span> + <span class="average">k</span> )  до (+ З <span>&sigma;</span> + <span class="average">k</span> )
+                    <span>
+                        Граничні значення можливих ставок прибутковості цінних паперів та  портфеля з ймовірністю 99,73%
+                        будуть в діапазоні від (-З &sigma; + <span class="average">k</span> )  до (+ З &sigma; + <span class="average">k</span>)
+                    </span>
                 </p>
                 <table class="table table-hover">
                     <thead>
@@ -555,17 +562,21 @@
                      Визначення необхідної прибутковісті портфелю на наступний рік.
                 </h2>
                 <p class="row col-12">
-                    В залежності від зміни дохідності ринку ( Км ) кожний цінний папір змінюється
-                    по різному За допомогою &nbsp; &beta; &nbsp; - коефіцієнта ми можемо обчислити
-                    відносний ступінь ризику цінних паперів і обчислити потрібний прибуток по ЦП.
+                    <span>
+                        В залежності від зміни дохідності ринку ( Км ) кожний цінний папір змінюється
+                        по різному За допомогою &nbsp; &beta; &nbsp; - коефіцієнта ми можемо обчислити
+                        відносний ступінь ризику цінних паперів і обчислити потрібний прибуток по ЦП.
+                    </span>
                 </p>
                 <p>
-                   <span> &beta; &nbsp;</span>  - коефіцієнт - це показник ризику,
-                    який характеризує ступінь чутливості зміни дохідності ЦП в залежності
-                    від зміни дохідності ринку. Розрахуємо відповідні&nbsp; &beta; &nbsp;
-                    - коефіцієнти цінних паперів А,Б,С за допомогою формули:
+                    <span>
+                        <span> &beta; &nbsp;</span>  - коефіцієнт - це показник ризику,
+                        який характеризує ступінь чутливості зміни дохідності ЦП в залежності
+                        від зміни дохідності ринку. Розрахуємо відповідні&nbsp; &beta; &nbsp;
+                        - коефіцієнти цінних паперів А,Б,С за допомогою формули:
+                    </span>
                 </p>
-                <div class="row col-md-6 mx-auto">
+                <div class="row col-md-10 mx-auto">
                     <div class="row col-12 justify-content-center">
                         <img class="img-fluid" src="{% static '/img/formula/betta_coeficients.jpg' %}" alt="betta coefficient">
                     </div>
@@ -583,9 +594,13 @@
                     <p class="row col-12 betta_a"></p>
                     <p class="row col-12 betta_b"></p>
                     <p class="row col-12 betta_c"></p>
-                    <p class="row col-12"><span>&beta;&nbsp;</span> - коефіцієнт портфеля визначаємо за допомогою формули:</p>
-                    <div class="row col-md-6 justify-content-center">
-                        <div class="row col-10 justify-content-center">
+                    <p class="row col-12">
+                        <span>
+                            <span>&beta;&nbsp;</span> - коефіцієнт портфеля визначаємо за допомогою формули:
+                        </span>
+                    </p>
+                    <div class="row col-md-10 justify-content-center">
+                        <div class="row col-md-10 justify-content-center">
                             <img class="img-fluid" src="{% static '/img/formula/betta-portfolio.jpg' %}" alt="betta portfolio coefficient">
                         </div>
                         <ul>
@@ -593,14 +608,16 @@
                             <li>w<sub>i</sub> - питома вага і-го активу у портфелі;</li>
                             <li> <span>&beta; <sub>i</sub></span> - бета коефіцієнт і-го активу.</li>
                         </ul>
+                    </div>
+                    <div class="row col-12 justify-content-start">
                         <p class="betta_portfolio"></p>
                     </div>
                 </div>
                 <p>Доходність, яку інвестор може вимагати від сформованого портфеля
                     в залежності від рівня його ризику визначається за наступною формулою:
                 </p>
-                <div class="row col-md-8 justify-content-center">
-                    <div class="row col-10 justify-content-center">
+                <div class="row col-lg-10 justify-content-center">
+                    <div class="row col-lg-10 justify-content-center">
                             <img class="img-fluid" src="{% static '/img/formula/capm.jpg' %}" alt="capital assets pricing model)">
                     </div>
                     <ul>
@@ -612,8 +629,8 @@
                         <li><span>(k<sub>m</sub> - k<sub>rf</sub>)</span> - премія за ризик – параметр, що показує перевищення
                             середньоринкової доходності в порівнянні з без ризикованими вкладеннями;
                         </li>
-                        <li><span>&beta;</span> - коефіцієнт чутливості зміни доходності
-                            цінного паперу до зміни ринкового фактору ( <span>&beta;- коефіцієнт портфеля </span>).
+                        <li><span>&beta;</span> - коефіцієнт чутливості зміни доходності цінного паперу до зміни
+                            ринкового фактору (<span>&beta;- коефіцієнт портфеля </span>).
                         </li>
                     </ul>
                 </div>

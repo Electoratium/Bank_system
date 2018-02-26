@@ -57,7 +57,6 @@ admin.site.register(Results_compliting_task, Results_admin)
 class Set_tasks_admin(admin.ModelAdmin):
     list_display = [field.name for field in Set_tasks._meta.fields]
 
-
     class Meta:
         model = Set_tasks
 

@@ -1,8 +1,13 @@
 .wrapper_content{
     overflow: hidden;
 }
+h3{
+    font-weight: bold;
+}
+#hidden_form{
+    visibility: hidden;
+}
 .initial-form{
-    /*display: none!important;*/
     justify-content: center;
     margin-top: 25vh;
     opacity: 1;
@@ -13,7 +18,7 @@
     padding: 0;
 }
 #test_block{
-    height: 80vh;
+    height: 87vh;
 }
 .progress_task, .condition{
     opacity: 0;
@@ -48,9 +53,8 @@
 }
 
 /*style for connection definition */
-
 #connection_definition{
-    height: 85vh;
+    height: 87vh;
 }
 #connection_definition .title-block{
     height:15%;
@@ -62,13 +66,12 @@
 #connection_definition ul{
     height: 100%;
 }
-#connection_definition .connection_block .col-md-4:not(:last-child) li{
+#connection_definition .connection_block .col-4:not(:last-child) li{
     height: 20%;
     margin: 2% 0;
 }
 .connection_block div:first-of-type li{
     text-align: center;
-
 }
 .drag-drop{
     z-index: 11;
@@ -119,10 +122,9 @@
     transition-duration: 1.5s;
 }
 
-
 /*styles for exercises */
 #exercises{
-    height: 85vh;
+    height: 87vh;
 
 }
 #exercises .condition_block{
@@ -136,9 +138,9 @@
     right: -125%;
     top:10%;
     width: 25%;
+    z-index: 10;
 }
 .answer_container{
-    /*position: relative;*/
     opacity:0;
     visibility: hidden;
     transition-duration: .8s;
@@ -153,4 +155,9 @@
 }
 
 
-
+#results{
+    height: 85vh;
+}
+#error{
+    margin-top:10vh;
+}

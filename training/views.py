@@ -16,8 +16,6 @@ def start_training(request):
     if sum(task_set) == 0:
         response = {'Not enough data in db': 'Error'}
     else:
-
-
         def get_random_tasks(sample, nmb_values):
             result = []
 
@@ -200,3 +198,13 @@ def start_training(request):
                 response['exercises'] = exercises_data
 
     return JsonResponse(response)
+
+
+def update_results(request):
+    session_key = request.session.session_key
+    user_data = request.POST
+
+    Results_compliting_task.objects.filter(session_key=session_key).update(tests = user_data['test'],
+                                                                           connection_definition = user_data['connection_definition'],
+                                                                           exercise = user_data['exercises'])
+    return JsonResponse({})
