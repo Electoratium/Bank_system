@@ -1,0 +1,104 @@
+@media screen and (max-width: 1440px){
+    html{
+        font-size: 90%;
+    }
+}
+@media screen and (max-width: 1034px){
+    .logo{
+        width: 8vw;
+    }
+    #connection_definition li{
+        font-size: 0.85rem;
+    }
+    h3,h4{
+        font-size: 1.25rem;
+    }
+    .card{
+        font-size: 0.8rem;
+    }
+}
+@media screen and (max-width: 768px){
+    html{
+        font-size: 80%;
+    }
+    .logo{
+        width: 10vw;
+    }
+
+    .hint_container{
+        width: 24vw;
+    }
+
+}
+@media screen and (max-width: 600px){
+    html{
+        font-size: 60%;
+    }
+    h3{
+        font-size: 1.75rem;
+    }
+    h4{
+        font-size: 1.5rem;
+    }
+}
+@media screen and (max-width: 480px){
+    html{
+        font-size: 50%;
+    }
+    .logo{
+        width: 12vw;
+    }
+    #connection_definition li{
+        font-size: 0.85rem;
+    }
+    .card{
+        font-size: 1rem;
+        padding: 0.5rem;
+    }
+    .show_hint_container{
+        right: -10%;
+    }
+}
+@media screen and (max-width: 768px) and (orientation: landscape){
+    html{
+        font-size: 50%;
+    }
+    .logo{
+        width: 8vw;
+    }
+    .show_hint_container{
+        right: -27%;
+    }
+    .hint_container{
+        width: 25vw;
+    }
+    .card{
+        font-size: 0.98rem;
+        padding: 0.5rem;
+    }
+    #error{
+        margin-top:5vh;
+    }
+}
+@media screen and (max-width: 600px) and (orientation: landscape){
+    html{
+        font-size: 50%;
+    }
+    #connection_definition li{
+        font-size: 0.85rem;
+    }
+
+    .show_hint_container{
+        right: -11%;
+    }
+    .hint_container{
+        width: 19vw;
+    }
+    .card{
+        font-size: 0.98rem;
+        padding: 0.5rem;
+    }
+}
+
+
+

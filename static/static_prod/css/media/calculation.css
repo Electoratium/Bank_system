@@ -1,0 +1,36 @@
+@media screen and (max-width:1440px){
+    html{
+        font-size: 90%;
+    }
+}
+@media screen and (max-width:768px){
+    html{
+        font-size: 75%;
+    }
+    .logo{
+        width: 10%;
+    }
+}
+@media screen and (max-width:600px){
+
+    html{
+        font-size: 55%;
+    }
+}
+@media screen and (max-width:320px){
+    .logo{
+        width: 10%;
+    }
+    html{
+        font-size: 50%;
+    }
+}
+/*phone landscape*/
+@media screen and (max-width:600px) and (orientation: landscape){
+    html{
+        font-size: 50%;
+    }
+    .list-group-item{
+        padding: .25rem 1rem;
+    }
+}

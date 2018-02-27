@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa|Ubuntu');
+h2{
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+ul{
+    list-style: none;
+
+}
+ul, p{
+    padding: 0!important;
+}
+.wrapper_content{
+    position: relative;
+    font-family: 'Comfortaa', cursive;
+}
+.form-container{
+    margin-top: 5%;
+}
+.form-title{
+    font-size: 1.5rem;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-weight:bold;
+}
+.form-submit input{
+   padding:2px;
+}
+.form-submit button{
+    vertical-align:baseline;
+}
+#burger{
+    position: fixed;
+    left:1%;
+    transform: translateX(-150%);
+    cursor: pointer;
+    z-index: 5;
+    top: 15%;
+}
+.showing_animation{
+    animation: show_elements .25s ease-out 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes show_elements {
+    0%{
+        transform: translateX(-150%);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+
+#menu{
+    position: fixed;
+    top:30%;
+    left:-100%;
+    transition: left .5s ease;
+    z-index: 10;
+}
+/* styles for top arrow*/
+#back-to-top{
+    position: fixed;
+    right: 1vw;
+    opacity: 0;
+    bottom: 10vh;
+    transition: opacity .5s ease;
+}
+#back-to-top a{
+    color: #3bc9dbde;
+}
+.show_arrow{
+    opacity: 1!important;
+}
+/* show or hide menu*/
+.show_menu{
+    left: 0!important;
+}
+.transparent-content{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top:0;
+    left:0;
+    z-index: 5;
+    background: gainsboro;
+    opacity: .4;
+}
+.list-group li{
+    padding: 0.5rem;
+    line-height: 1;
+}
+.list-group li a{
+    display: flex;
+    align-items: center;
+    font-size: 1.25rem;
+    color:black;
+    font-family: 'Ubuntu', sans-serif;
+}
+.menu-icons{
+    margin:0 1.5%;
+}
+.calculation_container{
+    visibility: hidden;
+}
+.show_content{
+    visibility: visible;
+}
+/* styles for chapters of resolving task*/
+#condition, #calculate_sigma{
+    margin-top: 1vw;
+}
+.betta_a{
+    font-size: 0.85rem;
+}
+
+.error{
+    margin-top: 1vw;
+    display: none;
+}
+.show_error{
+    display: block;
+}
+.average{
+    border-top: 0.5px solid black;
+}
+.remove_content{
+    display: none;
+}
+
