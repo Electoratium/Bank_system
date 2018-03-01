@@ -70,13 +70,9 @@ h3{
     height: 20%;
     margin: 2% 0;
 }
-#definition_block li{
+.draggable{
     -ms-touch-action: none;
     touch-action: none;
-}
-#drag-me::before {
-  content: "#" attr(id);
-  font-weight: bold;
 }
 .connection_block div:first-of-type li{
     text-align: center;
