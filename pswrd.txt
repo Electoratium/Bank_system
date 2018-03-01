@@ -1,2 +1,3 @@
 admin
-Yurik31255 
+
+learning-platform

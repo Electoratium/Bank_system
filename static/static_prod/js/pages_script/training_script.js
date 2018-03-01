@@ -168,7 +168,12 @@ document.addEventListener("DOMContentLoaded", function() {
                         setTimeout(change_visibility_test_block, 300);
 
                         for (var test_index = 0; test_index < 4; test_index++) {
-                            answer_elements[test_index].addEventListener('click', show_result)
+                            if ('ontouchstart' in window) {
+                                answer_elements[test_index].addEventListener('touchend', show_result);
+                            }
+                            else {
+                                answer_elements[test_index].addEventListener('click', show_result);
+                            }
                         }
                     }
 
@@ -219,7 +224,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
                         //remove listeners for others elements
                         for (var test_index = 0; test_index < 4; test_index++) {
-                            answer_elements[test_index].removeEventListener('click', show_result)
+                            if ('ontouchstart' in window) {
+                                answer_elements[test_index].removeEventListener('touchend', show_result)
+                            }
+                            else{
+                                answer_elements[test_index].removeEventListener('click', show_result)
+                            }
                         }
                     }
 

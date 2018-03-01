@@ -1,11 +1,18 @@
 @media screen and (max-width: 1125px){
-    .logo{
-        width: 20vw;
-    }
     html{
         font-size: 120%;
     }
-
+    .logo{
+        width: 20vw;
+    }
+}
+@media screen and (max-width: 1024px){
+    html{
+        font-size: 100%;
+    }
+    .logo{
+        width: 15vw;
+    }
 }
 @media screen and (max-width: 768px){
     html{
