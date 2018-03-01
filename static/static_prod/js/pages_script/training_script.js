@@ -212,12 +212,17 @@ document.addEventListener("DOMContentLoaded", function() {
                         var result = check_result(event.target, correct_answer);
 
                         if (result == 1) {
-                            event.target.classList.replace('list-group-item-light', 'list-group-item-success');
+                            event.target.classList.add('list-group-item-success');
+                            event.target.classList.remove('list-group-item-light');
                         }
                         else {
                             //show what is correct answer
-                            test_block.children[correct_answer - 1].classList.replace('list-group-item-light', 'list-group-item-success');
-                            event.target.classList.replace('list-group-item-light', 'list-group-item-danger');
+                            test_block.children[correct_answer - 1].classList.add('list-group-item-success');
+                            test_block.children[correct_answer - 1].classList.remove('list-group-item-light');
+
+                            //incorrect data
+                            event.target.classList.add('list-group-item-danger');
+                            event.target.classList.remove('list-group-item-light');
                         }
 
                         change_visibility_button();
