@@ -17,11 +17,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="training_script.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="training_script.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/static_prod/js/pages_script/training_script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="285" column="29" lean-forward="false" selection-start-line="285" selection-start-column="29" selection-end-line="285" selection-end-column="29" />
+            <state relative-caret-position="306">
+              <caret line="345" column="0" lean-forward="true" selection-start-line="345" selection-start-column="0" selection-end-line="345" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="training.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/static_prod/css/pages_style/training.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="521">
+              <caret line="75" column="1" lean-forward="true" selection-start-line="75" selection-start-column="1" selection-end-line="75" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="training.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/pages/training.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="73" column="21" lean-forward="true" selection-start-line="73" selection-start-column="21" selection-end-line="73" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -30,7 +50,7 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Bank_system/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
+            <state relative-caret-position="510">
               <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
               <folding>
                 <element signature="e#647#688#0" expanded="true" />
@@ -65,7 +85,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ct-chart-line</find>
       <find>ct-chart</find>
       <find>cor-cpb</find>
       <find>cp</find>
@@ -95,6 +114,7 @@
       <find>update_result_data</find>
       <find>nexet</find>
       <find>ree</find>
+      <find>replace</find>
     </findStrings>
     <replaceStrings>
       <replace>ct-chart-line</replace>
@@ -109,7 +129,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/landing/views.py" />
         <option value="$PROJECT_DIR$/gym/views.py" />
         <option value="$PROJECT_DIR$/gym/urls.py" />
         <option value="$PROJECT_DIR$/summary/views.py" />
@@ -160,6 +179,7 @@
         <option value="$PROJECT_DIR$/Bank_system/settings.py" />
         <option value="$PROJECT_DIR$/static/static_dev/css/media/landing.css" />
         <option value="$PROJECT_DIR$/static/static_prod/js/pages_script/training_script.js" />
+        <option value="$PROJECT_DIR$/static/static_prod/css/pages_style/training.css" />
       </list>
     </option>
   </component>
@@ -252,15 +272,20 @@
               <item name="Bank_system" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="static_prod" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Bank_system" type="b2602c69:ProjectViewProjectNode" />
               <item name="Bank_system" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="static_prod" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="pages_script" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+              <item name="pages_style" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Bank_system" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Bank_system" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -554,13 +579,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/static/static_dev/css/bootstrap/bootstrap.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2652">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/static_dev/img/error/unaviable_task.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -773,13 +791,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/pages/training.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="31" column="43" lean-forward="true" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/static_dev/css/media/training.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1615">
@@ -824,9 +835,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/static_prod/js/pages_script/training_script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="345" column="0" lean-forward="true" selection-start-line="345" selection-start-column="0" selection-end-line="345" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/pages/training.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="73" column="21" lean-forward="true" selection-start-line="73" selection-start-column="21" selection-end-line="73" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Bank_system/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
+        <state relative-caret-position="510">
           <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding>
             <element signature="e#647#688#0" expanded="true" />
@@ -844,10 +871,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/static_prod/js/pages_script/training_script.js">
+    <entry file="file://$PROJECT_DIR$/static/static_prod/css/pages_style/training.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="285" column="29" lean-forward="false" selection-start-line="285" selection-start-column="29" selection-end-line="285" selection-end-column="29" />
+        <state relative-caret-position="521">
+          <caret line="75" column="1" lean-forward="true" selection-start-line="75" selection-start-column="1" selection-end-line="75" selection-end-column="1" />
           <folding />
         </state>
       </provider>

@@ -229,7 +229,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                         //remove listeners for others elements
                         for (var test_index = 0; test_index < 4; test_index++) {
-                            if ('ontouchstart' in window) {
+                            if ('touchend' in window) {
                                 answer_elements[test_index].removeEventListener('touchend', show_result)
                             }
                             else{
