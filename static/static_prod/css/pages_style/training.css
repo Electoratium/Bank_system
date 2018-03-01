@@ -70,9 +70,13 @@ h3{
     height: 20%;
     margin: 2% 0;
 }
-#drop-1, #drop-2, #drop-3, #drop-4{
+#definition_block li{
     -ms-touch-action: none;
     touch-action: none;
+}
+#drag-me::before {
+  content: "#" attr(id);
+  font-weight: bold;
 }
 .connection_block div:first-of-type li{
     text-align: center;
