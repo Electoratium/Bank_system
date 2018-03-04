@@ -14,9 +14,12 @@
         width: 15vw;
     }
 }
-@media screen and (max-width: 768px){
+@media screen and (max-width: 800px){
     html{
         font-size: 80%;
+    }
+    .logo{
+        width: 20vw;
     }
 
 }
@@ -41,15 +44,17 @@
 @media screen and (max-width: 425px){
 
     html{
-        font-size: 30%;
+        font-size: 40%;
     }
 }
 @media screen and (max-width: 320px){
     html{
-        font-size: 25%;
+        font-size: 30%;
+    }
+    .link_descr{
+        font-size: 2.5rem;
     }
 }
-
 
 /*for orientation landscape*/
 @media screen and (max-width: 960px) and (orientation: landscape){
@@ -59,14 +64,24 @@
     html{
         font-size: 80%;
     }
-
 }
-@media screen and (max-width: 480px) and (orientation: landscape){
+@media screen and (max-width: 768px) and (orientation: landscape){
+    html{
+        font-size: 55%;
+    }
+}
+@media screen and (max-width: 600px) and (orientation: landscape){
     html{
         font-size: 45%;
     }
-
 }
+
+/*@media screen and (max-width: 480px) and (orientation: landscape){*/
+    /*html{*/
+        /*font-size: 45%;*/
+    /*}*/
+
+/*}*/
 @media screen and (max-width: 320px) and (orientation: landscape){
     html{
         font-size: 30%;
