@@ -32,7 +32,7 @@
 }
 @media screen and (max-width: 600px){
     html{
-        font-size: 60%;
+        font-size: 70%;
     }
     h3{
         font-size: 1.75rem;
@@ -43,10 +43,16 @@
 }
 @media screen and (max-width: 480px){
     html{
-        font-size: 50%;
+        font-size: 45%;
     }
     .logo{
-        width: 12vw;
+        width: 10vw;
+    }
+    .form-group{
+        font-size: 1.5rem;
+    }
+    .button_container{
+        font-size: 1.5rem;
     }
     #connection_definition li{
         font-size: 0.85rem;
@@ -61,7 +67,7 @@
 }
 @media screen and (max-width: 768px) and (orientation: landscape){
     html{
-        font-size: 50%;
+        font-size: 65%;
     }
     .logo{
         width: 8vw;

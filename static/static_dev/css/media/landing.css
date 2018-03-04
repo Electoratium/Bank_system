@@ -75,16 +75,3 @@
         font-size: 45%;
     }
 }
-
-/*@media screen and (max-width: 480px) and (orientation: landscape){*/
-    /*html{*/
-        /*font-size: 45%;*/
-    /*}*/
-
-/*}*/
-@media screen and (max-width: 320px) and (orientation: landscape){
-    html{
-        font-size: 30%;
-    }
-
-}
