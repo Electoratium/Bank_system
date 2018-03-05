@@ -19,10 +19,10 @@ class Connection_definition(models.Model):
     concept_2 = models.CharField(max_length=64, blank=True)
     concept_3 = models.CharField(max_length=64, blank=True)
     concept_4 = models.CharField(max_length=64, blank=True)
-    definition_1 = models.CharField(max_length=150, blank=True)
-    definition_2 = models.CharField(max_length=150, blank=True)
-    definition_3 = models.CharField(max_length=150, blank=True)
-    definition_4 = models.CharField(max_length=150, blank=True)
+    definition_1 = models.CharField(max_length=100, blank=True)
+    definition_2 = models.CharField(max_length=100, blank=True)
+    definition_3 = models.CharField(max_length=100, blank=True)
+    definition_4 = models.CharField(max_length=100, blank=True)
 
     class Meta:
         verbose_name = "З'єднання понять та їх визначень"

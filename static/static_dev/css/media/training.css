@@ -1,14 +1,14 @@
 @media screen and (max-width: 1440px){
     html{
-        font-size: 90%;
+        font-size: 100%;
     }
 }
-@media screen and (max-width: 1034px){
+@media screen and (max-width: 1024px){
     .logo{
         width: 8vw;
     }
     #connection_definition li{
-        font-size: 0.85rem;
+        font-size: 1rem;
     }
     h3,h4{
         font-size: 1.25rem;
@@ -17,18 +17,13 @@
         font-size: 0.8rem;
     }
 }
-@media screen and (max-width: 768px){
-    html{
-        font-size: 80%;
-    }
-    .logo{
-        width: 10vw;
-    }
-
+@media screen and (max-width: 800px){
     .hint_container{
         width: 24vw;
     }
-
+    #connection_definition li{
+        font-size: 0.9rem;
+    }
 }
 @media screen and (max-width: 600px){
     html{
@@ -38,7 +33,7 @@
         font-size: 1.75rem;
     }
     h4{
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
 }
 @media screen and (max-width: 480px){
@@ -49,13 +44,16 @@
         width: 10vw;
     }
     .form-group{
-        font-size: 1.5rem;
+        font-size: 1.25rem;
     }
-    .button_container{
-        font-size: 1.5rem;
+    #start_test_btn{
+        font-size: 1.25rem;
     }
     #connection_definition li{
-        font-size: 0.85rem;
+        font-size: 1.1rem;
+    }
+    .btn{
+        font-size: 1.3rem;
     }
     .card{
         font-size: 1rem;
@@ -65,12 +63,45 @@
         right: -10%;
     }
 }
-@media screen and (max-width: 768px) and (orientation: landscape){
+@media screen and (max-width: 375px){
     html{
-        font-size: 65%;
+        font-size: 40%;
+    }
+    #connection_definition li{
+        font-size: 1rem;
+    }
+}
+@media screen and (max-width: 320px){
+
+    #connection_definition li{
+        font-size: 0.55rem;
+    }
+}
+
+
+/*landscape orientation*/
+@media screen and (max-width: 1024px) and (orientation: landscape){
+    html{
+        font-size: 80%;
+    }
+    .logo{
+        width: 10vw;
+    }
+    #connection_definition li{
+        font-size: 0.9rem;
+    }
+
+}
+
+@media screen and (max-width: 800px) and (orientation: landscape){
+    html{
+        font-size: 55%;
     }
     .logo{
         width: 8vw;
+    }
+    .btn{
+        font-size: 0.9rem;
     }
     .show_hint_container{
         right: -27%;
@@ -82,16 +113,17 @@
         font-size: 0.98rem;
         padding: 0.5rem;
     }
+
     #error{
         margin-top:5vh;
     }
 }
-@media screen and (max-width: 600px) and (orientation: landscape){
+@media screen and (max-width: 640px) and (orientation: landscape){
     html{
         font-size: 50%;
     }
     #connection_definition li{
-        font-size: 0.85rem;
+        font-size: 0.9rem;
     }
 
     .show_hint_container{
@@ -103,6 +135,11 @@
     .card{
         font-size: 0.98rem;
         padding: 0.5rem;
+    }
+}
+@media screen and (max-width: 640px) and (orientation: landscape){
+    html{
+        font-size: 45%;
     }
 }
 
