@@ -32,7 +32,6 @@ $(document).ready(function(){
             data: data,
             cache: true,
             success:function (data) {
-
                 var entry_data = data.entry_data_table;
                 var free_risk_cp = data.free_risk_cp;
                 var average_rate_for_cp = data.average_rate_for_cp;
@@ -50,6 +49,21 @@ $(document).ready(function(){
                 var menu = $('#menu');
                 var hidden_container = $('.visib-cont');
                 var calculation_container = $('.calculation_container');
+
+                //show nav menu on devices
+                var menu_container = document.getElementById('phone-nav-menu');
+                if(getComputedStyle(menu_container).display == 'flex'){
+                    var browser_height = document.documentElement.clientHeight;
+                    document.addEventListener('scroll', function () {
+                      if(window.pageYOffset > browser_height){
+                          menu_container.classList.add('show_content_menu');
+                      }
+                      else{
+                          menu_container.classList.remove('show_content_menu');
+                      }
+                    })
+
+                }
 
                 calculation_container.addClass('show_content');
 

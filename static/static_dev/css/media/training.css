@@ -4,9 +4,6 @@
     }
 }
 @media screen and (max-width: 1024px){
-    .logo{
-        width: 8vw;
-    }
     #connection_definition li{
         font-size: 1rem;
     }
@@ -21,13 +18,19 @@
     .hint_container{
         width: 24vw;
     }
+    .logo{
+        width: 10%;
+    }
+    .navbar-nav li a{
+        font-size: 2.5rem;
+    }
     #connection_definition li{
         font-size: 0.9rem;
     }
 }
 @media screen and (max-width: 600px){
     html{
-        font-size: 70%;
+        font-size: 65%;
     }
     h3{
         font-size: 1.75rem;
@@ -38,10 +41,7 @@
 }
 @media screen and (max-width: 480px){
     html{
-        font-size: 45%;
-    }
-    .logo{
-        width: 10vw;
+        font-size: 40%;
     }
     .form-group{
         font-size: 1.25rem;
@@ -65,14 +65,16 @@
 }
 @media screen and (max-width: 375px){
     html{
-        font-size: 40%;
+        font-size: 33%;
     }
     #connection_definition li{
         font-size: 1rem;
     }
 }
 @media screen and (max-width: 320px){
-
+    html{
+        font-size: 28%;
+    }
     #connection_definition li{
         font-size: 0.55rem;
     }
@@ -84,9 +86,6 @@
     html{
         font-size: 80%;
     }
-    .logo{
-        width: 10vw;
-    }
     #connection_definition li{
         font-size: 0.9rem;
     }
@@ -96,9 +95,6 @@
 @media screen and (max-width: 800px) and (orientation: landscape){
     html{
         font-size: 55%;
-    }
-    .logo{
-        width: 8vw;
     }
     .btn{
         font-size: 0.9rem;
