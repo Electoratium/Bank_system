@@ -13,14 +13,13 @@ def calculation(request):
 
 def complete_calculate(request):
     post = request.POST
-    print(post)
     variant = post["variant"]
     multiplier = post['coef']
     free_risk_cp = list(Additional_data.objects.all().values_list('free_risk_cp'))[0][0]
     upper_bound_for_chart = list(Additional_data.objects.all().values_list('upper_bound_for_chart'))[0][0]
     response = {}
 
-    if ((Calculated_variants.objects.filter(variant = variant))):
+    if ((Calculated_variants.objects.filter(variant=variant))):
         calculated_data = [[], [], [], [], []]
         average_rate_income = []
         cpa = []
@@ -32,9 +31,7 @@ def complete_calculate(request):
         list_sigma_c = []
         list_sigma_portfolio = []
 
-
-
-        calculated_result = Calculated_variants.objects.filter(variant = variant).values_list()[0]
+        calculated_result = Calculated_variants.objects.filter(variant=variant).values_list()[0]
 
         average_cp_list = [calculated_result[2], calculated_result[3], calculated_result[4]]
         average_rate_portfolio = calculated_result[5]
@@ -54,7 +51,6 @@ def complete_calculate(request):
         list_sigma_portfolio = [list_sigma[3], round(((-3 * list_sigma[3]) + average_rate_portfolio), 2),
                                 round((3 * list_sigma[3] + average_rate_portfolio), 2)]
 
-
         betta_coef = [calculated_result[13], calculated_result[14], calculated_result[15], calculated_result[16]]
 
         # first element is Id
@@ -72,7 +68,6 @@ def complete_calculate(request):
                 sum_cp += calculated_data[row][counter] * entry_data[row][i]
                 counter += 1
             average_rate_income.append(round(sum_cp, 2))
-
 
         # adding weight for betta coeficient portfolio
 
@@ -132,7 +127,8 @@ def complete_calculate(request):
             for x in total:
                 avrg.append(round(x / 5, 2))
 
-            correlation_res = (avrg[0] - x_avrg * y_avrg) / sqrt((avrg[1] - x_avrg * x_avrg)*(avrg[2] - y_avrg * y_avrg))
+            correlation_res = (avrg[0] - x_avrg * y_avrg) / sqrt(
+                (avrg[1] - x_avrg * x_avrg) * (avrg[2] - y_avrg * y_avrg))
 
             # add sum and average x and y
             total.insert(0, round(x_sum, 2))
@@ -140,7 +136,7 @@ def complete_calculate(request):
             avrg.insert(0, x_avrg)
             avrg.insert(1, y_avrg)
 
-            result.extend([xy, total, avrg, x_square, y_square,round(correlation_res, 2)])
+            result.extend([xy, total, avrg, x_square, y_square, round(correlation_res, 2)])
 
             for item in corelation_data[name_cp]:
                 corelation_data[name_cp][item] = result[counter]
@@ -210,8 +206,6 @@ def complete_calculate(request):
 
         average_rate_portfolio = round((sum(average_rate_income) / 5), 2)
 
-
-
         def calc_sigma(list_val, aver_cp):
             def get_result(x):
                 return pow(x - aver_cp, 2)
@@ -266,24 +260,18 @@ def complete_calculate(request):
             avrg = []
             correlation_res = 0
 
-
-
-
             # get average cpx or cpy
             for row in list_cp:
                 x_sum += row[0]
                 y_sum += row[1]
 
-
             x_avrg = round(x_sum / 5, 2)
             y_avrg = round(y_sum / 5, 2)
 
             for rows in list_cp:
-
                 xy.append(round((rows[0] * rows[1]), 2))
                 x_square.append(round(pow(rows[0], 2), 2))
                 y_square.append(round(pow(rows[1], 2), 2))
-
 
             total.extend([round(sum(xy), 2), round(sum(x_square), 2), round(sum(y_square), 2)])
 
@@ -315,7 +303,6 @@ def complete_calculate(request):
                        calculated_data[4][3]]
         average_market = sum(market_list) / 5
 
-
         def get_coef_betta(cp_index):
             left_part = []
             right_part = []
@@ -335,31 +322,28 @@ def complete_calculate(request):
 
         betta_coef_a = round(get_coef_betta(0), 2)
         betta_coef_b = round(get_coef_betta(1), 2)
-        betta_coef_c = round(get_coef_betta(2),2)
-        betta_coef_portf = round(betta_coef_a * weights[0] + betta_coef_b * weights[1] + betta_coef_c * weights[2],2)
-
+        betta_coef_c = round(get_coef_betta(2), 2)
+        betta_coef_portf = round(betta_coef_a * weights[0] + betta_coef_b * weights[1] + betta_coef_c * weights[2], 2)
 
         required_profitability = round(free_risk_cp + (average_market - free_risk_cp) * betta_coef_portf, 2)
 
         # update database new data
 
-        Calculated_variants.objects.create(variant = variant, average_profit_for_cp_a = average_cp_list[0],
-                                           average_profit_for_cp_b = average_cp_list[1],
-                                           average_profit_for_cp_c = average_cp_list[2],
+        Calculated_variants.objects.create(variant=variant, average_profit_for_cp_a=average_cp_list[0],
+                                           average_profit_for_cp_b=average_cp_list[1],
+                                           average_profit_for_cp_c=average_cp_list[2],
                                            average_profit_for_portfolio=average_rate_portfolio,
-                                           sigma_a = sigma_a, sigma_b=sigma_b,
-                                           sigma_c = sigma_c, sigma_portfolio=sigma_portfolio,
-                                           corAB = corelation_data["cpa_cpb"]['correlation'],
-                                           corAC = corelation_data["cpa_cpc"]['correlation'],
-                                           corBC = corelation_data["cpb_cpc"]['correlation'],
-                                           betta_coef_Cpa = betta_coef_a,
-                                           betta_coef_Cpb = betta_coef_b,
-                                           betta_coef_Cpc = betta_coef_c,
-                                           betta_coef_portfolio = betta_coef_portf,
-                                           required_profitability_for_active = required_profitability
+                                           sigma_a=sigma_a, sigma_b=sigma_b,
+                                           sigma_c=sigma_c, sigma_portfolio=sigma_portfolio,
+                                           corAB=corelation_data["cpa_cpb"]['correlation'],
+                                           corAC=corelation_data["cpa_cpc"]['correlation'],
+                                           corBC=corelation_data["cpb_cpc"]['correlation'],
+                                           betta_coef_Cpa=betta_coef_a,
+                                           betta_coef_Cpb=betta_coef_b,
+                                           betta_coef_Cpc=betta_coef_c,
+                                           betta_coef_portfolio=betta_coef_portf,
+                                           required_profitability_for_active=required_profitability
                                            )
-
-
 
         # extend average sigma(-3sigma + sigma)) for diagram
         list_border_sigma = [list_sigma_a, list_sigma_b, list_sigma_c, list_sigma_portfolio]
@@ -379,6 +363,5 @@ def complete_calculate(request):
                     'required_profitability_for_portf': required_profitability,
                     'free_risk_cp': free_risk_cp
                     }
-
 
     return JsonResponse(response)

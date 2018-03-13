@@ -2,9 +2,9 @@
 {% load static %}
 {% block title %}
     <!-- base style for chart_js -->
-    <link rel="stylesheet" href="{% static '/css/style_chart/main_style.css' %}">
-	<link rel="stylesheet" href="{% static '/css/style_chart/base_style_chart/chart_js.min.css' %}">
-	<link rel="stylesheet" href="{% static '/css/style_chart/base_style_chart/chart_legend.css' %}">
+    <link rel="stylesheet" href="{% static '/css/style_chart/main_style.css' %}" media="none" onload="if(media!=='all')media='all'">
+	<link rel="stylesheet" href="{% static '/css/style_chart/base_style_chart/chart_js.min.css' %}" media="none" onload="if(media!=='all')media='all'">
+	<link rel="stylesheet" href="{% static '/css/style_chart/base_style_chart/chart_legend.css' %}" media="none" onload="if(media!=='all')media='all'">
     <link rel="stylesheet" href="{% static '/css/media/calculation.css'%}">
     <title>Розрахунок</title>
 {% endblock %}

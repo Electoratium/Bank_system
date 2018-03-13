@@ -17,6 +17,7 @@ $(document).ready(function(){
         else{
             coef = parseFloat("1." + variant);
         }
+
         var csrf_token = $('#form_variant [name="csrfmiddlewaretoken"]').val();
         var url = form.attr("action");
 

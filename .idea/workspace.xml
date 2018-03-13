@@ -4,17 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/static/static_dev/js/pages_script/training_script.js" line="4" mnemonic="9" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8bcfcce4-45c7-4628-a2f7-95a0d25b6e47" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/static_dev/css/media/calculation.css" afterPath="$PROJECT_DIR$/static/static_dev/css/media/calculation.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/static_dev/css/media/training.css" afterPath="$PROJECT_DIR$/static/static_dev/css/media/training.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/static_dev/css/pages_style/calculation.css" afterPath="$PROJECT_DIR$/static/static_dev/css/pages_style/calculation.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/static_dev/js/pages_script/calculation_script.js" afterPath="$PROJECT_DIR$/static/static_dev/js/pages_script/calculation_script.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/Basic_templates/base.html" afterPath="$PROJECT_DIR$/templates/Basic_templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/Basic_templates/navbar.html" afterPath="$PROJECT_DIR$/templates/Basic_templates/navbar.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/pages/calculation.html" afterPath="$PROJECT_DIR$/templates/pages/calculation.html" />
-    </list>
+    <list default="true" id="8bcfcce4-45c7-4628-a2f7-95a0d25b6e47" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,7 +16,42 @@
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="calculation_script.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/static_dev/js/pages_script/calculation_script.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+              <folding>
+                <marker date="1520953199649" expanded="true" signature="7518:7525" ph="√" />
+                <marker date="1520953199649" expanded="true" signature="16894:16901" ph="√" />
+                <marker date="1520953199649" expanded="true" signature="18967:18973" ph="β" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="landing.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/landing/landing.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="381">
+              <caret line="39" column="14" lean-forward="false" selection-start-line="39" selection-start-column="14" selection-end-line="39" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="training.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/pages/training.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="14" lean-forward="false" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -40,7 +65,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>cp</find>
       <find>cpb</find>
       <find>cpa</find>
       <find>cpa_cpb_cor</find>
@@ -70,6 +94,7 @@
       <find>replace</find>
       <find>draggable</find>
       <find>.navbar-nav</find>
+      <find>pri</find>
     </findStrings>
     <replaceStrings>
       <replace>ct-chart-line</replace>
@@ -85,7 +110,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/gym/urls.py" />
         <option value="$PROJECT_DIR$/summary/views.py" />
         <option value="$PROJECT_DIR$/summary/urls.py" />
         <option value="$PROJECT_DIR$/calculation/admin.py" />
@@ -97,7 +121,6 @@
         <option value="$PROJECT_DIR$/static/static_dev/css/style_chart/main_style.css" />
         <option value="$PROJECT_DIR$/static/static_dev/js/chart/create_chart.js" />
         <option value="$PROJECT_DIR$/static/static_dev/css/landing_styles.css" />
-        <option value="$PROJECT_DIR$/calculation/views.py" />
         <option value="$PROJECT_DIR$/static/static_dev/js/script.js" />
         <option value="$PROJECT_DIR$/static/static_dev/css/style.css" />
         <option value="$PROJECT_DIR$/static/static_dev/js/calculation_script.js" />
@@ -112,7 +135,6 @@
         <option value="$PROJECT_DIR$/static/static_dev/js/pages_script/training_script.js" />
         <option value="$PROJECT_DIR$/training/admin.py" />
         <option value="$PROJECT_DIR$/training/views.py" />
-        <option value="$PROJECT_DIR$/templates/landing/landing.html" />
         <option value="$PROJECT_DIR$/static/static_dev/css/pages_style/landing.css" />
         <option value="$PROJECT_DIR$/static/static_dev/css/pages_style/navbar.css" />
         <option value="$PROJECT_DIR$/calculation/forms.py" />
@@ -121,21 +143,24 @@
         <option value="$PROJECT_DIR$/Bank_system/urls.py" />
         <option value="$PROJECT_DIR$/calculation/urls.py" />
         <option value="$PROJECT_DIR$/static/static_prod/js/pages_script/training_script.js" />
-        <option value="$PROJECT_DIR$/Bank_system/settings.py" />
         <option value="$PROJECT_DIR$/static/static_prod/css/pages_style/training.css" />
         <option value="$PROJECT_DIR$/static/static_dev/css/media/landing.css" />
         <option value="$PROJECT_DIR$/templates/pages/training.html" />
         <option value="$PROJECT_DIR$/static/static_dev/css/pages_style/training.css" />
         <option value="$PROJECT_DIR$/training/models.py" />
         <option value="$PROJECT_DIR$/pswrd.txt" />
-        <option value="$PROJECT_DIR$/static/static_dev/js/pages_script/calculation_script.js" />
-        <option value="$PROJECT_DIR$/templates/Basic_templates/base.html" />
         <option value="$PROJECT_DIR$/static/static_dev/css/media/training.css" />
         <option value="$PROJECT_DIR$/templates/Basic_templates/navbar.html" />
         <option value="$PROJECT_DIR$/static/static_dev/css/media/navbar.css" />
         <option value="$PROJECT_DIR$/static/static_dev/css/media/calculation.css" />
-        <option value="$PROJECT_DIR$/templates/pages/calculation.html" />
         <option value="$PROJECT_DIR$/static/static_dev/css/pages_style/calculation.css" />
+        <option value="$PROJECT_DIR$/templates/errors/csrf_error.html" />
+        <option value="$PROJECT_DIR$/Bank_system/settings.py" />
+        <option value="$PROJECT_DIR$/calculation/views.py" />
+        <option value="$PROJECT_DIR$/templates/Basic_templates/base.html" />
+        <option value="$PROJECT_DIR$/static/static_dev/js/pages_script/calculation_script.js" />
+        <option value="$PROJECT_DIR$/templates/pages/calculation.html" />
+        <option value="$PROJECT_DIR$/templates/landing/landing.html" />
       </list>
     </option>
   </component>
@@ -196,62 +221,18 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="Bank_system" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Bank_system" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Bank_system" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Bank_system" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Bank_system" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Bank_system" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="static_dev" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Bank_system" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Bank_system" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="static_dev" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Bank_system" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Bank_system" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="static_dev" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-              <item name="pages_style" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Bank_system" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Bank_system" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="static_dev" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Bank_system" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Bank_system" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Bank_system" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Bank_system" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="Basic_templates" type="462c0819:PsiDirectoryNode" />
+              <item name="Bank_system — копия" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Bank_system — копия" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -480,19 +461,19 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35480464" sideWeight="0.5125" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38225976" sideWeight="0.4875" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38160676" sideWeight="0.4875" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -537,11 +518,9 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/summary/forms.py" />
     <entry file="file://$PROJECT_DIR$/summary/__init__.py" />
     <entry file="file://$PROJECT_DIR$/summary/admin.py" />
     <entry file="file://$PROJECT_DIR$/summary/views.py" />
-    <entry file="file://$PROJECT_DIR$/templates/Basic_templates/footer.html" />
     <entry file="file://$PROJECT_DIR$/training/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="314">
@@ -553,13 +532,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/landing/landing.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-171">
-          <caret line="6" column="72" lean-forward="false" selection-start-line="6" selection-start-column="72" selection-end-line="6" selection-end-column="72" />
         </state>
       </provider>
     </entry>
@@ -616,13 +588,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/calculation/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-986">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Bank_system/settings_prod1.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -648,14 +613,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/static_dev/js/pages_script/training_script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="170" column="59" lean-forward="false" selection-start-line="170" selection-start-column="59" selection-end-line="170" selection-end-column="59" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -687,13 +644,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Bank_system/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/static_prod/js/interact/interact.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -715,14 +665,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Bank_system/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="128" column="1" lean-forward="false" selection-start-line="128" selection-start-column="1" selection-end-line="128" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/static_prod/js/pages_script/training_script.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -737,19 +679,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/pages/training.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="44" column="23" lean-forward="true" selection-start-line="44" selection-start-column="23" selection-end-line="44" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/calculation/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="7" column="38" lean-forward="false" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -771,7 +704,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -779,22 +711,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/static_dev/js/pages_script/calculation_script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="63" column="22" lean-forward="true" selection-start-line="63" selection-start-column="22" selection-end-line="63" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Basic_templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" column="4" lean-forward="true" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -802,7 +718,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="680">
           <caret line="40" column="29" lean-forward="false" selection-start-line="40" selection-start-column="29" selection-end-line="40" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -810,23 +725,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="71" column="2" lean-forward="true" selection-start-line="71" selection-start-column="2" selection-end-line="71" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/static_dev/css/media/navbar.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="37" column="11" lean-forward="false" selection-start-line="37" selection-start-column="11" selection-end-line="37" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/static/static_dev/css/media/navbar.css" />
     <entry file="file://$PROJECT_DIR$/static/static_dev/css/pages_style/calculation.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
           <caret line="32" column="1" lean-forward="true" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -834,22 +740,90 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="488">
           <caret line="42" column="22" lean-forward="false" selection-start-line="42" selection-start-column="22" selection-end-line="42" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Basic_templates/footer.html" />
+    <entry file="file://$PROJECT_DIR$/templates/errors/csrf_error.html" />
+    <entry file="file://$PROJECT_DIR$/templates/Basic_templates/navbar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="13" lean-forward="true" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/static_dev/js/pages_script/training_script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1724">
+          <caret line="170" column="59" lean-forward="false" selection-start-line="170" selection-start-column="59" selection-end-line="170" selection-end-column="59" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Bank_system/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Bank_system/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="88" column="16" lean-forward="false" selection-start-line="88" selection-start-column="16" selection-end-line="88" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/calculation/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="10" lean-forward="true" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Basic_templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="35" column="21" lean-forward="true" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/static_dev/js/pages_script/calculation_script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding>
+            <marker date="1520953199649" expanded="true" signature="7518:7525" ph="√" />
+            <marker date="1520953199649" expanded="true" signature="16894:16901" ph="√" />
+            <marker date="1520953199649" expanded="true" signature="18967:18973" ph="β" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/pages/calculation.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="32" column="73" lean-forward="false" selection-start-line="32" selection-start-column="73" selection-end-line="32" selection-end-column="87" />
+        <state relative-caret-position="85">
+          <caret line="5" column="100" lean-forward="false" selection-start-line="5" selection-start-column="100" selection-end-line="5" selection-end-column="150" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/pages/training.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="14" lean-forward="false" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Basic_templates/navbar.html">
+    <entry file="file://$PROJECT_DIR$/templates/landing/landing.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        <state relative-caret-position="381">
+          <caret line="39" column="14" lean-forward="false" selection-start-line="39" selection-start-column="14" selection-end-line="39" selection-end-column="14" />
           <folding />
         </state>
       </provider>
