@@ -1,14 +1,11 @@
 @media screen and (max-width: 1440px){
     html{
-        font-size: 90%;
+        font-size: 100%;
     }
 }
-@media screen and (max-width: 1034px){
-    .logo{
-        width: 8vw;
-    }
+@media screen and (max-width: 1024px){
     #connection_definition li{
-        font-size: 0.85rem;
+        font-size: 1rem;
     }
     h3,h4{
         font-size: 1.25rem;
@@ -17,45 +14,49 @@
         font-size: 0.8rem;
     }
 }
-@media screen and (max-width: 768px){
-    html{
-        font-size: 80%;
-    }
-    .logo{
-        width: 10vw;
-    }
-
+@media screen and (max-width: 800px){
     .hint_container{
         width: 24vw;
     }
-
+    .logo{
+        width: 10%;
+    }
+    .navbar-nav li a{
+        font-size: 2.5rem;
+    }
+    #connection_definition li{
+        font-size: 0.9rem;
+    }
 }
 @media screen and (max-width: 600px){
     html{
-        font-size: 70%;
+        font-size: 65%;
     }
     h3{
         font-size: 1.75rem;
     }
     h4{
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
 }
 @media screen and (max-width: 480px){
     html{
-        font-size: 45%;
-    }
-    .logo{
-        width: 10vw;
+        font-size: 40%;
     }
     .form-group{
-        font-size: 1.5rem;
+        font-size: 1.25rem;
     }
-    .button_container{
-        font-size: 1.5rem;
+    #start_test_btn{
+        font-size: 1.25rem;
     }
     #connection_definition li{
-        font-size: 0.85rem;
+        font-size: 1.1rem;
+    }
+    .btn{
+        font-size: 1.3rem;
+    }
+    .hint_container{
+        width: 22vw;
     }
     .card{
         font-size: 1rem;
@@ -65,37 +66,76 @@
         right: -10%;
     }
 }
-@media screen and (max-width: 768px) and (orientation: landscape){
+@media screen and (max-width: 375px){
     html{
-        font-size: 65%;
+        font-size: 33%;
     }
-    .logo{
-        width: 8vw;
+    #connection_definition li{
+        font-size: 1rem;
+    }
+    .card{
+        font-size: 1.2rem;
+    }
+    .condition_block h3, .condition_block h4, .progress_block{
+        font-size: 2rem;
+    }
+    #nav-menu li a{
+        font-size: 2rem;
+    }
+}
+@media screen and (max-width: 320px){
+    html{
+        font-size: 28%;
+    }
+    #connection_definition li{
+        font-size: 0.55rem;
+    }
+}
+
+
+/*landscape orientation*/
+@media screen and (max-width: 1024px) and (orientation: landscape){
+    html{
+        font-size: 80%;
+    }
+    #connection_definition li{
+        font-size: 0.9rem;
+    }
+
+}
+
+@media screen and (max-width: 800px) and (orientation: landscape){
+    html{
+        font-size: 55%;
+    }
+    .btn{
+        font-size: 0.9rem;
     }
     .show_hint_container{
-        right: -27%;
+        right: -26%;
     }
     .hint_container{
-        width: 25vw;
+        width: 24vw;
     }
     .card{
         font-size: 0.98rem;
         padding: 0.5rem;
     }
+
     #error{
         margin-top:5vh;
     }
 }
-@media screen and (max-width: 600px) and (orientation: landscape){
+@media screen and (max-width: 640px) and (orientation: landscape){
     html{
-        font-size: 50%;
+        font-size: 45%;
     }
     #connection_definition li{
-        font-size: 0.85rem;
+        font-size: 0.9rem;
     }
 
     .show_hint_container{
-        right: -11%;
+        right: -25%;
     }
     .hint_container{
         width: 19vw;
@@ -103,6 +143,14 @@
     .card{
         font-size: 0.98rem;
         padding: 0.5rem;
+    }
+}
+@media screen and (max-width: 568px) and (orientation: landscape){
+    .show_hint_container{
+        right: -10%;
+    }
+    .hint_container{
+        width: 19vw;
     }
 }
 
